@@ -1,5 +1,5 @@
-import Prova from './login/login.js';
-import GlobalState from './GlobalState.js';
+import Prova from '@src/login/login.js';
+import GlobalState from '@src/GlobalState.js';
 
 function App() {
   return (
