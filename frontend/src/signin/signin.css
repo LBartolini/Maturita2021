@@ -1,4 +1,4 @@
-.root-login {
+.root-signin {
 	display: flex;
 	height: 100vh;
 	justify-content: center;
@@ -21,13 +21,17 @@
 	box-shadow: 1px 1px 40px var(--highlight-color);
 }
 
-.form-row {
+.form-signin-label {
+	margin-right: 2vh;
+}
+
+.form-signin-input {
+	min-width: 30vh;
+}
+
+.form-signin-row {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin: 2vh;
-}
-
-label {
-	margin-right: 2vh;
 }

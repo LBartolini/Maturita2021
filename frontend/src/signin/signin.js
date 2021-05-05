@@ -16,18 +16,19 @@ const SigninScreen = () => {
 	}
 
 	return (
-		<div className="root-login">
+		<div className="root-signin router-content">
 			<div className="form-signin">
-				<div className="form-row">
-					<label>sus</label>
-					<input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+				<h2>Registrazione</h2>
+				<div className="form-signin-row">
+					<label className="form-signin-label">Email</label>
+					<input type="text" className="form-signin-input" value={email} onChange={e => setEmail(e.target.value)}/>
 				</div>
-				<div className="form-row">
-					<label>sus</label>
-					<input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+				<div className="form-signin-row">
+					<label className="form-signin-label">Password</label>
+					<input type="password" className="form-signin-input" value={password} onChange={e => setPassword(e.target.value)}/>
 				</div>
-				<div className="form-row">
-					<a onClick={() => {history.push("/")}} className="ancora-form">Indietro</a>
+				<div className="form-signin-row">
+					<a onClick={() => {history.push("/login")}} className="ancora-form">Torna al login</a>
 					<button onClick={handleSubmit}>Registrati</button>
 				</div>
 			</div>

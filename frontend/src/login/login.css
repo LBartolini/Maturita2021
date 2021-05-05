@@ -21,15 +21,19 @@
 	box-shadow: 1px 1px 40px var(--highlight-color);
 }
 
-.form-row {
+.form-login-row {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin: 2vh;
 }
 
-label {
+.form-login-label {
 	margin-right: 2vh;
+}
+
+.form-login-input {
+	min-width: 30vh;
 }
 
 button:hover {

@@ -3,7 +3,6 @@
 	--first-dark-color: rgb(209, 209, 209);
 	--second-dark-color: rgb(116, 112, 112);
 	--highlight-color: rgba(110, 81, 163, 1);
-
 }
 
 body, html {
@@ -11,4 +10,8 @@ body, html {
 	background-color: var(--background-color);
 	font-size: 16px !important;
 	font-family: Arial !important;
+}
+
+.router-content {
+	margin-left: 25vh;
 }

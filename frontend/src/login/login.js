@@ -16,17 +16,18 @@ const LoginScreen = () => {
 	}
 
 	return (
-		<div className="root-login">
+		<div className="root-login router-content">
 			<div className="form-login">
-				<div className="form-row">
-					<label>Email</label>
-					<input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+				<h2>Accesso</h2>
+				<div className="form-login-row">
+					<label className="form-login-label">Email</label>
+					<input type="text" className="form-login-input" value={email} onChange={e => setEmail(e.target.value)}/>
 				</div>
-				<div className="form-row">
-					<label>Password</label>
-					<input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
+				<div className="form-login-row">
+					<label className="form-login-label">Password</label>
+					<input type="password" className="form-login-input" value={password} onChange={e => setPassword(e.target.value)}/>
 				</div>
-				<div className="form-row">
+				<div className="form-login-row">
 					<a onClick={() => {history.push("/signin")}} className="ancora-form">Non hai un account?<br/> Registrati</a>
 					<button onClick={handleSubmit}>Accedi</button>
 				</div>
