@@ -2,6 +2,7 @@ import LoginScreen from '@src/login/login.js';
 import SigninScreen from '@src/signin/signin.js';
 import NavBar from '@src/navbar/navbar.js';
 import HomeScreen from '@src/home/home.js';
+import InfrScreen from '@src/infrastrutture/infrastrutture.js';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -17,9 +18,10 @@ function App() {
 		<Switch className="router">
 			<Route path="/login" component={LoginScreen} />
 			<Route path="/signin" component={SigninScreen} />
-			<Route path="/" exact component={HomeScreen} />
+			<Route path="/infrastrutture" component={InfrScreen} />
+			<Route path="/home" component={HomeScreen} />
+			<Route path="/" component={HomeScreen} />
 		</Switch>
-      <LoginScreen />
     </Router>
   );
 }

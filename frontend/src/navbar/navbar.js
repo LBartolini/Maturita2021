@@ -6,12 +6,13 @@ import './navbar.css';
 import { AiFillHome } from 'react-icons/ai';
 import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+import GlobalVar from '@src/GlobalVar.js';
 
 const NavBar = () => {
 	const history = useHistory();
 
 	return (
-		<div className="navbar">
+		<div className="my-navbar">
 			<Navigation
             activeItemId="/"
             onSelect={({itemId}) => {
@@ -34,19 +35,14 @@ const NavBar = () => {
                 elemBefore: null,
               },
               {
-                title: 'Management',
-                itemId: '/management',
+                title: 'Infrastrutture',
+                itemId: '/infrastrutture',
                 elemBefore: null,
-                subNav: [
-                  {
-                    title: 'Projects',
-                    itemId: '/management/projects',
-                  },
-                  {
-                    title: 'Members',
-                    itemId: '/management/members',
-                  },
-                ],
+              },
+			  {
+                title: 'Bandi di Manutenzione',
+                itemId: '/bandi',
+                elemBefore: null,
               },
             ]}
           />

@@ -1,0 +1,52 @@
+.infr {
+	display: flex;
+	height: 100vh;
+}
+
+.infr-item {
+	background-color: var(--first-dark-color);
+	height: 25vh;
+	width: 80vw;
+	border-radius: 5px;
+	box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+.infr-item-inside {
+	display: flex;
+	width: 100%;
+	height: 100%;
+} 
+
+.infr-item-info {
+	padding-left: 10px;
+	width: 45%;
+	height: 100%;
+}
+
+.infr-item-sensori {
+	width: 45%;
+	height: 100%;
+	padding-top: 5vh;
+}
+
+.infr-item-btn {
+	width: 10%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.infr-li {
+	list-style-type: none;
+	padding-top: 3vh;
+}
+
+.infr-ul {
+	margin: 0;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 1vw;
+}

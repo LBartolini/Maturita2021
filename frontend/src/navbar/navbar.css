@@ -1,7 +1,7 @@
-.navbar {
-	position: absolute;
-	max-width: 25vh;
-	min-width: 130px;
+.my-navbar {
+	position: fixed;
+	max-width: 15vw;
+	min-width: 150px;
 	height: 100%;
 	background-color: var(--first-dark-color);
 	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
