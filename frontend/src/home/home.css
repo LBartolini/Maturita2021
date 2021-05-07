@@ -1,4 +1,24 @@
 .home {
 	display: flex;
+	flex-direction: column;
 	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+
+.header-title {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	border-bottom-width: 10px;
+	border-color: black;
+}
+
+.body-home {
+	display: flex;
+	width: 100%;
+	flex-grow: 9;
 }

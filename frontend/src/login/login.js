@@ -12,7 +12,6 @@ const LoginScreen = () => {
 	const handleSubmit = () => {
 		setPassword("");
 		setEmail("");
-		history.push("/signin");
 	}
 
 	return (

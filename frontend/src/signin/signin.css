@@ -10,7 +10,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: space-around;
-	padding: 8vh;
+	padding: 5vh;
 	border-radius: 15px;
 	border: 1px var(--second-dark-color) solid;
 	box-shadow: 1px 1px 15px var(--highlight-color);
@@ -33,5 +33,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 2vh;
+	margin: 1vh;
+}
+
+.form-signin-row > input {
+	border-radius: 5px;
 }

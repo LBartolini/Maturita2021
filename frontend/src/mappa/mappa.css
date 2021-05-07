@@ -5,7 +5,7 @@
 .leaflet-container {
 	position: absolute;
 	top: 5%;
-	right: 5vw;
-	width: 65vw; 
+	margin-left: calc(max(15vw, 150px) + 2vw);
+	width: 80vw; 
 	height: 90vh;
   }

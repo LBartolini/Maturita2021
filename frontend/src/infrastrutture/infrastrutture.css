@@ -19,18 +19,26 @@
 
 .infr-item-info {
 	padding-left: 10px;
-	width: 45%;
+	width: 25%;
 	height: 100%;
+}
+
+.infr-item-info > h2 {
+	font-size: 16px;
 }
 
 .infr-item-sensori {
-	width: 45%;
+	width: 60%;
 	height: 100%;
-	padding-top: 5vh;
+	margin-top: 3vh;
+}
+
+.infr-item-sensori > h2 {
+	font-size: 16px;
 }
 
 .infr-item-btn {
-	width: 10%;
+	width: 15%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;

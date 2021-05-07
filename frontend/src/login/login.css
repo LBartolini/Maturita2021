@@ -39,3 +39,7 @@
 button:hover {
 	box-shadow: 1px 1px 8px var(--highlight-color);
 }
+
+.form-login-row > input {
+	border-radius: 5px;
+}
