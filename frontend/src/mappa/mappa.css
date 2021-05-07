@@ -1,0 +1,11 @@
+.mappa {
+	height: 100vh;
+}
+
+.leaflet-container {
+	position: absolute;
+	top: 5%;
+	right: 5vw;
+	width: 65vw; 
+	height: 90vh;
+  }

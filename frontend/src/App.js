@@ -1,6 +1,7 @@
 import LoginScreen from '@src/login/login.js';
 import SigninScreen from '@src/signin/signin.js';
 import NavBar from '@src/navbar/navbar.js';
+import Mappa from '@src/mappa/mappa.js';
 import HomeScreen from '@src/home/home.js';
 import InfrScreen from '@src/infrastrutture/infrastrutture.js';
 import {
@@ -8,7 +9,6 @@ import {
 	Switch,
 	Route
   } from "react-router-dom";
-import GlobalVar from '@src/GlobalVar.js';
 import './global.css';
 
 function App() {
@@ -18,7 +18,8 @@ function App() {
 		<Switch className="router">
 			<Route path="/login" component={LoginScreen} />
 			<Route path="/signin" component={SigninScreen} />
-			<Route path="/infrastrutture" component={InfrScreen} />
+			<Route path="/infrastrutture" exact component={InfrScreen} />
+			<Route path="/infrastrutture/mappa" component={Mappa} />
 			<Route path="/home" component={HomeScreen} />
 			<Route path="/" component={HomeScreen} />
 		</Switch>

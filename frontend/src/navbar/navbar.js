@@ -38,6 +38,13 @@ const NavBar = () => {
                 title: 'Infrastrutture',
                 itemId: '/infrastrutture',
                 elemBefore: null,
+				subNav: [
+					{
+						title: 'Visualizza Mappa',
+						itemId: '/infrastrutture/mappa',
+						elemBefore: null
+					}
+				]
               },
 			  {
                 title: 'Bandi di Manutenzione',

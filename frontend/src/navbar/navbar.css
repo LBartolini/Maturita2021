@@ -11,8 +11,3 @@
 .side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option-selected {
 	background-color: rgba(255, 255, 255, 0.5) !important;
 }
-
-/* dimensione bordino colorato*/
-.side-navigation-panel .side-navigation-panel-select .side-navigation-panel-select-wrap .side-navigation-panel-select-option{
-	border-left-width: 0px !important;
-}
