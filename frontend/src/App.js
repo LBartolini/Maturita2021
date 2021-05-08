@@ -1,4 +1,5 @@
 import LoginScreen from '@src/login/login.js';
+import Logout from '@src/logout.js';
 import SigninScreen from '@src/signin/signin.js';
 import NavBar from '@src/navbar/navbar.js';
 import Mappa from '@src/mappa/mappa.js';
@@ -14,10 +15,7 @@ import './global.css';
 import {useState, useMemo} from 'react';
 
 function App() {
-	const [user, setUser] = useState({
-		nome: "Pippo",
-		categoria: "Ministero",
-	});
+	const [user, setUser] = useState(null);
 
 	const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
@@ -28,6 +26,7 @@ function App() {
 					<NavBar />
 					<Switch className="router">
 						<Route path="/login" component={LoginScreen} />
+						<Route path="/logout" component={Logout} />
 						<Route path="/signin" component={SigninScreen} />
 						<Route path="/infrastrutture" exact component={InfrScreen} />
 						<Route path="/infrastrutture/mappa" component={Mappa} />

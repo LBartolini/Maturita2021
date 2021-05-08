@@ -8,7 +8,7 @@ import './home.css';
 const HomeScreen = () => {
 	const history = useHistory();
 	const {user, setUser} = useContext(UserContext);
-
+	// per cambiare solo un attributo dello stato setUser({...stato, attr: new_value})
 	return (
 		<div className="home router-content">
 			<div className="header-title">
@@ -19,8 +19,14 @@ const HomeScreen = () => {
 			<div className="body-home">
 				<pre style={{marginLeft: 30}}>{JSON.stringify(user, null, 2)}</pre>
 				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({...user, categoria: "Societa Manutenzione"});
-				}}>cambia</button>
+					setUser({nome:"pippo" , categoria: "Societa Manutenzione"});
+				}}>Soc Manutenzione</button>
+				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
+					setUser({nome:"pippo", categoria: "Societa Autostrada"});
+				}}>Soc Autostrada</button>
+				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
+					setUser({nome:"pippo", categoria: "Ministero"});
+				}}>Ministero</button>
 			</div>
 		</div>
 	);
