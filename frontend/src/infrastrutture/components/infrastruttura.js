@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Button from 'react-bootstrap/Button'
+import {
+	useHistory
+} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Infrastruttura = ({ infr }) => {
 	const stato_manutenzione = 50;
+	const history = useHistory();
 
 	return (
 		<div className="infr-item">
@@ -18,7 +22,7 @@ const Infrastruttura = ({ infr }) => {
 					<ProgressBar  animated striped variant="success" now={stato_manutenzione}/>
 				</div>
 				<div className="infr-item-btn">
-					<Button variant="secondary">INFO</Button>
+					<Button variant="secondary" onClick={() => history.push('/infr-info/'+infr.id)}>INFO</Button>
 				</div>
 			</div>
 		</div>

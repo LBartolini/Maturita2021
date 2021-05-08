@@ -18,29 +18,36 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const Mappa = () => {
+	const history = useHistory();
 	const [markers, setMarkers] = useState([{
 		position: [43.869560, 12.5558136],
 		nome: "ponte X",
+		id: 0
 	},
 	{
 		position: [43.769560, 10.5558136],
 		nome: "ponte X",
+		id: 1
 	},
 	{
 		position: [43.469560, 11.2558136],
 		nome: "ponte X",
+		id: 2
 	},
 	{
 		position: [43.169560, 10.7558136],
 		nome: "ponte X",
+		id: 3
 	},
 	{
 		position: [44.769560, 11.6558136],
 		nome: "ponte X",
+		id: 4
 	},
 	{
 		position: [45.769560, 10.7558136],
 		nome: "ponte X",
+		id: 5
 	}]);
 	const starter_position = [43.416667 , 11]
 
@@ -52,11 +59,11 @@ const Mappa = () => {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 				{markers.map((marker) => {
-					return (<Marker position={marker.position}>
+					return (<Marker position={marker.position} key={marker.id}>
 						<Popup>
 							{marker.nome}
 							<br/>
-							<button onClick={() => console.log(marker.nome)}>Vai al ponte</button>
+							<button onClick={() => history.push('/infr-info/'+marker.id)}>Vai al ponte</button>
 						</Popup>
 					</Marker>)
 				})

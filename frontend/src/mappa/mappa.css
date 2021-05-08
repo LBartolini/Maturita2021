@@ -9,3 +9,7 @@
 	width: 80vw; 
 	height: 90vh;
   }
+
+  .leaflet-popup-tip-container {
+	  left: 60% !important;
+  }
