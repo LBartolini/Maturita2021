@@ -6,6 +6,8 @@ import './signin.css';
 
 const SigninScreen = () => {
 	const [email, setEmail] = useState("");
+	const [nome, setNome] = useState("");
+	const [cognome, setCognome] = useState("");
 	const [password, setPassword] = useState("");
 	const [el_alta, setEl_Alta] = useState(false);
 	const [el_bassa, setEl_Bassa] = useState(false);	
@@ -14,13 +16,21 @@ const SigninScreen = () => {
 	const history = useHistory();
 
 	const handleSubmit = () => {
-		console.log(el_alta);
+		
 	}
 
 	return (
 		<div className="root-signin router-content">
 			<div className="form-signin">
 				<h2>Registrazione</h2>
+				<div className="form-signin-row">
+					<label className="form-signin-label">Nome</label>
+					<input type="text" className="form-signin-input" value={nome} onChange={e => setNome(e.target.value)}/>
+				</div>
+				<div className="form-signin-row">
+					<label className="form-signin-label">Cognome</label>
+					<input type="text" className="form-signin-input" value={cognome} onChange={e => setCognome(e.target.value)}/>
+				</div>
 				<div className="form-signin-row">
 					<label className="form-signin-label">Email</label>
 					<input type="text" className="form-signin-input" value={email} onChange={e => setEmail(e.target.value)}/>
@@ -32,19 +42,19 @@ const SigninScreen = () => {
 				<label className="form-signin-label" >Parametri di manutenzione:</label>
 				<div className="form-signin-row">
 					<label className="form-signin-label">Elettricità Alta</label>
-					<input type="checkbox" className="form-signin-input" onChange={e => {setEl_Alta(e.target.value)}}/>
+					<input type="checkbox" className="form-signin-input" value={el_alta} onChange={e => {setEl_Alta(e.target.checked)}}/>
 				</div>
 				<div className="form-signin-row">
 					<label className="form-signin-label">Elettricità Bassa</label>
-					<input type="checkbox" className="form-signin-input" onChange={e => setEl_Bassa(e.target.value)}/>
+					<input type="checkbox" className="form-signin-input" onChange={e => setEl_Bassa(e.target.checked)}/>
 				</div>
 				<div className="form-signin-row">
 					<label className="form-signin-label">Struttura</label>
-					<input type="checkbox" className="form-signin-input" onChange={e => setStruttura(e.target.value)}/>
+					<input type="checkbox" className="form-signin-input" onChange={e => setStruttura(e.target.checked)}/>
 				</div>
 				<div className="form-signin-row">
 					<label className="form-signin-label">Asfalto</label>
-					<input type="checkbox" className="form-signin-input" onChange={e => setAsfalto(e.target.value)}/>
+					<input type="checkbox" className="form-signin-input" onChange={e => setAsfalto(e.target.checked)}/>
 				</div>
 				<div className="form-signin-row">
 					<a onClick={() => {history.push("/login")}} className="ancora-form">Torna al login</a>

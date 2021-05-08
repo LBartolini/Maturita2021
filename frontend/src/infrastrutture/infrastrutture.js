@@ -19,7 +19,6 @@ const InfrScreen = () => {
 			})
 		}
 		setInfr(x);
-		console.log(infr);
 	}, []);
 
 

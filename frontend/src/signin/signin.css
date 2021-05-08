@@ -1,6 +1,6 @@
 .root-signin {
 	display: flex;
-	height: 100vh;
+	height: 100%;
 	justify-content: center;
 	align-items: center;
 }
@@ -11,6 +11,8 @@
 	justify-content: center;
 	align-items: space-around;
 	padding: 5vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
 	border-radius: 15px;
 	border: 1px var(--second-dark-color) solid;
 	box-shadow: 1px 1px 15px var(--highlight-color);
@@ -38,4 +40,9 @@
 
 .form-signin-row > input {
 	border-radius: 5px;
+}
+
+.form-signin > .form-signin-label {
+	padding-top: 2vh;
+	text-decoration: underline;
 }

@@ -12,3 +12,5 @@ https://canvasjs.com/react-charts/json-data-api-ajax-chart/
 https://www.youtube.com/watch?v=CXa0f4-dWi4  (tutorial navbar con router in react)
 
 https://www.php.net/manual/en/function.password-hash.php
+
+https://github.com/benawad/react-hooks-tutorial/tree/7_useContext
