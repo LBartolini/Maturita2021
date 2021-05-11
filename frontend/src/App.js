@@ -31,7 +31,7 @@ function App() {
 						<Route path="/signin" component={SigninScreen} />
 						<Route path="/infrastrutture" exact component={InfrScreen} />
 						<Route path="/infr-info/:id" component={InfrInfo} />
-						<Route path="/infrastrutture/mappa" component={Mappa} />
+						<Route path="/mappa" component={Mappa} />
 						<Route path="/home" component={HomeScreen} />
 						<Route path="/" exact component={HomeScreen} />
 					</Switch>

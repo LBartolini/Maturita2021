@@ -51,6 +51,8 @@ const Mappa = () => {
 	}]);
 	const starter_position = [43.416667 , 11]
 
+	// inserire useEffect(..., []) per fetchare i dati dall'api
+
 	return (
 		<div className="mappa">
 			<MapContainer center={starter_position} zoom={9} scrollWheelZoom={true} className="map-component">

@@ -1,0 +1,35 @@
+.infrInfo {
+	display: flex;
+	flex-direction: column;
+	margin-right: 2vw;
+}
+
+.infr-head {
+	display: flex;
+	width: 100%;
+	height: 15vh;
+	border-bottom: 1px solid;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.infr-body {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 85vh;
+}
+
+.infr-btns {
+	width: 100%;
+	height: 20%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.infr-grafico {
+	width: 100%;
+	height: 80%;
+}
+
