@@ -1,16 +1,29 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
 	useHistory
   } from "react-router-dom";
 import './infrastrutture.css';
+import {UserContext} from "@src/UserContext.js";
 import Infrastruttura from './components/infrastruttura.js';
 
 
 const InfrScreen = () => {
+	const {user, setUser} = useContext(UserContext);
 	const history = useHistory();
 	const [infr, setInfr] = useState([])
 
 	useEffect(() => {
+		if(user){
+			//utente logged in
+			if(user.categoria == "Societa Manutenzione"){
+				setUser(null);
+				history.push("/");
+			}
+		}else{
+			//utente non ha fatto l'accesso
+			history.push("/");
+		}
+
 		const x = [];
 		for(let i = 0; i<10; i++){
 			x.push({
@@ -20,7 +33,6 @@ const InfrScreen = () => {
 		}
 		setInfr(x);
 	}, []);
-
 
 	return (
 		<div className="infr router-content">

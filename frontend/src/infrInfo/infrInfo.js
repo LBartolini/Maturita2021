@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "@src/UserContext.js";
 import "./infrInfo.css";
+import GlobalVar from "@src/GlobalVar.js";
 import { useParams } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Line } from 'react-chartjs-2';
+import { useHistory } from "react-router-dom";
 
 const scegliColoreGrafico = (parametro) => {
 	switch (parametro) {
@@ -42,6 +44,7 @@ const InfrInfo = () => {
 	const [datiManutenzione, setDatiManutenzione] = useState([]);
 	const [paramAttuale, setParamAttuale] = useState("scegliere parametro...");
 	const { id } = useParams();
+	const history = useHistory();
 
 	const options = {
 		scales: {
@@ -63,8 +66,19 @@ const InfrInfo = () => {
 	}
 
 	useEffect(() => {
-		// sostituire con fetch
-		fetch("http://localhost:5555/dati-esempio").then(response => response.json())
+		//controllo utente
+		if(user){
+			//utente logged in
+			if(user.categoria == "Societa Manutenzione"){
+				setUser(null);
+				history.push("/");
+			}
+		}else{
+			//utente non ha fatto l'accesso
+			history.push("/");
+		}
+
+		fetch(GlobalVar.urlAPI+"/dati-esempio").then(response => response.json())
 			.then(data => {
 				setDatiManutenzione(data);
 
@@ -75,7 +89,6 @@ const InfrInfo = () => {
 					parametri: ["Asfalto", "El_Alta", "El_Bassa", "Struttura"],
 				});
 			});
-
 	}, []);
 
 	return (

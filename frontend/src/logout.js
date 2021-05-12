@@ -9,7 +9,7 @@ const Logout = () => {
 	const {user, setUser} = useContext(UserContext);
 
 	setUser(null);
-	history.push('/')
+	history.push('/');
 	return null;
 }
 

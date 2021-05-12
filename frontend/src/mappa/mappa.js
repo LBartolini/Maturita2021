@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from "@src/UserContext.js";
 import {
 	useHistory
 } from "react-router-dom";
@@ -18,6 +19,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 const Mappa = () => {
+	const {user, setUser} = useContext(UserContext);
 	const history = useHistory();
 	const [markers, setMarkers] = useState([{
 		position: [43.869560, 12.5558136],
@@ -49,7 +51,21 @@ const Mappa = () => {
 		nome: "ponte X",
 		id: 5
 	}]);
-	const starter_position = [43.416667 , 11]
+	const starter_position = [43.416667, 11]
+
+	useEffect(() => {
+		//controllo utente
+		if(user){
+			//utente logged in
+			if(user.categoria == "Societa Manutenzione"){
+				setUser(null);
+				history.push("/");
+			}
+		}else{
+			//utente non ha fatto l'accesso
+			history.push("/");
+		}
+	}, []);
 
 	// inserire useEffect(..., []) per fetchare i dati dall'api
 
@@ -64,8 +80,8 @@ const Mappa = () => {
 					return (<Marker position={marker.position} key={marker.id}>
 						<Popup>
 							{marker.nome}
-							<br/>
-							<button onClick={() => history.push('/infr-info/'+marker.id)}>Vai al ponte</button>
+							<br />
+							<button onClick={() => history.push('/infr-info/' + marker.id)}>Vai al ponte</button>
 						</Popup>
 					</Marker>)
 				})
