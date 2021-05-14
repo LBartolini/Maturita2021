@@ -6,6 +6,7 @@ import NavBar from '@src/navbar/navbar.js';
 import Mappa from '@src/mappa/mappa.js';
 import HomeScreen from '@src/home/home.js';
 import InfrScreen from '@src/infrastrutture/infrastrutture.js';
+import AppaltiScreen from '@src/appalti/appalti.js';
 import { UserContext } from '@src/UserContext.js';
 import {
 	BrowserRouter as Router,
@@ -32,6 +33,7 @@ function App() {
 						<Route path="/infrastrutture" exact component={InfrScreen} />
 						<Route path="/infr-info/:id" component={InfrInfo} />
 						<Route path="/mappa" component={Mappa} />
+						<Route path="/appalti" component={AppaltiScreen} />
 						<Route path="/home" component={HomeScreen} />
 						<Route path="/" exact component={HomeScreen} />
 					</Switch>

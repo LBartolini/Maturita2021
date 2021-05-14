@@ -19,7 +19,11 @@ const HomeScreen = () => {
 			<div className="body-home">
 				<pre style={{marginLeft: 30}}>{JSON.stringify(user, null, 2)}</pre>
 				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({nome:"pippo" , categoria: "Societa Manutenzione"});
+					setUser({
+						nome:"pippo" , 
+						categoria: "Societa Manutenzione",
+						disponibilitaParametri: ["Asfalto", "Struttura"]
+					});
 				}}>Soc Manutenzione</button>
 				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
 					setUser({nome:"pippo", categoria: "Societa Autostrada"});

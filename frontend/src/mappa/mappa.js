@@ -79,9 +79,9 @@ const Mappa = () => {
 				{markers.map((marker) => {
 					return (<Marker position={marker.position} key={marker.id}>
 						<Popup>
-							{marker.nome}
+							<p>{marker.nome}</p>
 							<br />
-							<button onClick={() => history.push('/infr-info/' + marker.id)}>Vai al ponte</button>
+							<button onClick={() => history.push('/infr-info/' + marker.id)}>INFO</button>
 						</Popup>
 					</Marker>)
 				})

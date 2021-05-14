@@ -33,6 +33,13 @@
 	height: 90%;
 }
 
+.infr-btns-appalto {
+	width: 45%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 #h-stato {
-	text-shadow: 1px 2px #000000;
+	text-shadow: 1px 1px #000000;
 }

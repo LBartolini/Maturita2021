@@ -6,37 +6,7 @@ import { useParams } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Line } from 'react-chartjs-2';
 import { useHistory } from "react-router-dom";
-
-const scegliColoreGrafico = (parametro) => {
-	switch (parametro) {
-		case "Asfalto":
-			return 'rgba(255, 0, 0, 0.6)';
-			break;
-
-		case "El_Alta":
-			return 'rgba(0, 0, 0, 0.6)';
-			break;
-
-		case "El_Bassa":
-			return 'rgba(0, 255, 0, 0.6)';
-			break;
-
-		case "Struttura":
-			return 'rgba(0, 0, 255, 0.6)';
-			break;
-	}
-}
-
-const trovaColoreStato = (valoreStato) => {
-	if(valoreStato > 75){
-		return "green";
-	}else if(valoreStato > 65){
-		return "orange";
-	}else{
-		return "red";
-	}
-
-}
+import { scegliColoreGrafico, trovaColoreStato } from "@src/Utils.js";
 
 const InfrInfo = () => {
 	const { user, setUser } = useContext(UserContext);
@@ -86,7 +56,7 @@ const InfrInfo = () => {
 					id: id,
 					nome_ponte: "Ponte X",
 					stato: 80,
-					parametri: ["Asfalto", "El_Alta", "El_Bassa", "Struttura"],
+					parametri: ["Asfalto", "Elettricita Alta", "Elettricita Bassa", "Struttura"],
 				});
 			});
 	}, []);
@@ -102,9 +72,9 @@ const InfrInfo = () => {
 				<div className="infr-body">
 					<div className="infr-btns">
 						<button onClick={() => { fetchDatiManutenzione() }}>Aggiorna dati</button>
-						{user.categoria == "Societa Autostrada" ?
-							<>
-								<button onClick={() => { fetchDatiManutenzione() }}>Crea Appalto</button>
+						{user && user.categoria == "Societa Autostrada" ?
+							<div className="infr-btns-appalto">
+								<button onClick={() => { fetchDatiManutenzione() }}>Indici Appalto</button>
 								<h5>per parametro</h5>
 								<Dropdown>
 									<Dropdown.Toggle style={{color: "black"}}>
@@ -116,7 +86,7 @@ const InfrInfo = () => {
 										}
 									</Dropdown.Menu>
 								</Dropdown>
-							</>
+							</div>
 							: <></>}
 					</div>
 					<div className="infr-grafico">

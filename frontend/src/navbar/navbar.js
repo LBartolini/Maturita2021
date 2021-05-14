@@ -43,15 +43,15 @@ const NavBar = () => {
 						elemBefore: null
 					},
 					{
-						title: 'Bandi di Manutenzione',
-						itemId: '/bandi',
+						title: 'Appalti di Manutenzione',
+						itemId: '/appalti',
 						elemBefore: null,
 					});
 				break;
 			case "Societa Manutenzione":
 				items_navbar.push({
-					title: 'Bandi di Manutenzione',
-					itemId: '/bandi',
+					title: 'Appalti di Manutenzione',
+					itemId: '/appalti',
 					elemBefore: null,
 				});
 				break;
@@ -67,8 +67,8 @@ const NavBar = () => {
 						elemBefore: null
 					},
 					{
-						title: 'Bandi di Manutenzione',
-						itemId: '/bandi',
+						title: 'Appalti di Manutenzione',
+						itemId: '/Appalti',
 						elemBefore: null,
 					});
 				break;

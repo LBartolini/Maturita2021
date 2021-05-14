@@ -1,0 +1,72 @@
+.appalti {
+	display: flex;
+	height: 100vh;
+	flex-direction: column;
+}
+
+.appalto-item {
+	background-color: var(--first-dark-color);
+	height: 15vh;
+	width: 80vw;
+	border-radius: 5px;
+	box-shadow: 2px 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+.appalto-item-inside {
+	display: flex;
+	width: 100%;
+	height: 100%;
+} 
+
+.appalto-item-info {
+	padding-left: 10px;
+	width: 25%;
+	height: 100%;
+}
+
+.appalto-item-info > h2 {
+	font-size: 16px;
+}
+
+.appalto-item-sensori {
+	width: 60%;
+	height: 100%;
+	margin-top: 3vh;
+}
+
+.appalto-item-sensori > h2 {
+	font-size: 16px;
+}
+
+.appalto-item-btn {
+	width: 15%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.appalti-li {
+	list-style-type: none;
+	padding-top: 3vh;
+}
+
+.appalti-ul {
+	margin: 0;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 1vw;
+}
+
+.filtri {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 5px;
+}
+
+.filtri > *{
+	margin-left: 3vw;
+}

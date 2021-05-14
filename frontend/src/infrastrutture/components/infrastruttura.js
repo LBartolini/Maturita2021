@@ -5,6 +5,7 @@ import {
 	useHistory
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { trovaColoreProgressBar } from "@src/Utils.js";
 
 const Infrastruttura = ({ infr }) => {
 	const stato_manutenzione = 50;
@@ -19,7 +20,7 @@ const Infrastruttura = ({ infr }) => {
 				</div>
 				<div className="infr-item-sensori">
 					<h2>Stato di Manutenzione [{stato_manutenzione}%]</h2>
-					<ProgressBar  animated striped variant="success" now={stato_manutenzione}/>
+					<ProgressBar  animated striped variant={trovaColoreProgressBar(stato_manutenzione)} now={stato_manutenzione}/>
 				</div>
 				<div className="infr-item-btn">
 					<Button variant="secondary" onClick={() => history.push('/infr-info/'+infr.id)}>INFO</Button>

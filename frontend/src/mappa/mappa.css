@@ -6,10 +6,10 @@
 	position: absolute;
 	top: 5%;
 	margin-left: calc(max(15vw, 150px) + 2vw);
-	width: 80vw; 
+	width: 80vw;
 	height: 90vh;
-  }
+}
 
-  .leaflet-popup-tip-container {
-	  left: 60% !important;
-  }
+.leaflet-popup-tip-container {
+	left: 60% !important;
+}
