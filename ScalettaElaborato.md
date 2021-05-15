@@ -15,12 +15,14 @@
   - #### Simulazione Sensori (Python)
 
 - ## Database
+
+	- ### Analisi della Traccia e dei Requisiti
   
   - ### Progettazione Concettuale
-    
-    - #### Ristrutturazione
   
   - ### Progettazione Logica
+
+  	- #### Ristrutturazione
   
   - ### Progettazione Fisica
     

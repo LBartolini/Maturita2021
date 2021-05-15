@@ -6,13 +6,11 @@ def main():
 	dati = []
 	tempo = []
 	verbose = False
-	prob_base_stazionare = 0.8
-	decadimento_temporale = 0.99
+	prob_base_stazionare = 0.9
 	for i in range(1, 180, 2):
 		if verbose: print("Minuto ", i)
-		nuovo = nuovo_dato(dati, tempo, prob_base_stazionare=prob_base_stazionare, max_decaduta=0.1, momentum_mult=0.5, punti_momentum=10, verbose=verbose)
-		prob_base_stazionare *= decadimento_temporale
-		if nuovo < 60:
+		nuovo = nuovo_dato(dati, tempo, prob_base_stazionare=prob_base_stazionare, momentum_mult=0.5, punti_momentum=5, verbose=verbose)
+		if nuovo < 50:
 			break
 		dati.append(nuovo)
 		tempo.append(i)
