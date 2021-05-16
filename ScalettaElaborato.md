@@ -16,7 +16,7 @@
 
 - ## Database
 
-	- ### Analisi della Traccia e dei Requisiti
+  - ### Studio di fattibilità e analisti dei requisiti
   
   - ### Progettazione Concettuale
   

@@ -36,7 +36,6 @@ const LoginScreen = () => {
 					throw new Error;
 				}
 			}).then(data => {
-				//TODO differenziare soc manutenzione (richiedere parametri)
 				if (data.Categoria == "Societa Manutenzione") {
 					setUser({
 						email: to_send.email,

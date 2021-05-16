@@ -16,12 +16,8 @@ const scegliColoreGrafico = (parametro) => {
 			return 'rgba(255, 0, 0, 0.6)';
 			break;
 
-		case "Elettricita Alta":
+		case "Elettricita":
 			return 'rgba(0, 0, 0, 0.6)';
-			break;
-
-		case "Elettricita Bassa":
-			return 'rgba(0, 255, 0, 0.6)';
 			break;
 
 		case "Struttura":

@@ -58,7 +58,7 @@ const InfrInfo = () => {
 					id: id,
 					nome_ponte: "Ponte X",
 					stato: 80,
-					parametri: ["Asfalto", "Elettricita Alta", "Elettricita Bassa", "Struttura"],
+					parametri: ["Asfalto", "Elettricita", "Struttura"],
 				});
 			});
 	}, []);

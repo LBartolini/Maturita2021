@@ -55,8 +55,7 @@ const AppaltiScreen = () => {
 						:
 						<Dropdown.Menu>
 							<Dropdown.Item key={0} onClick={() => { setFiltroParam("...") }}>...</Dropdown.Item>
-							<Dropdown.Item key={1} onClick={() => { setFiltroParam("Elettricita Alta") }}>Elettricita Alta</Dropdown.Item>
-							<Dropdown.Item key={2} onClick={() => { setFiltroParam("Elettricita Bassa") }}>Elettricita Bassa</Dropdown.Item>
+							<Dropdown.Item key={1} onClick={() => { setFiltroParam("Elettricita") }}>Elettricita Alta</Dropdown.Item>
 							<Dropdown.Item key={3} onClick={() => { setFiltroParam("Asfalto") }}>Asfalto</Dropdown.Item>
 							<Dropdown.Item key={4} onClick={() => { setFiltroParam("Struttura") }}>Struttura</Dropdown.Item>
 						</Dropdown.Menu>}
