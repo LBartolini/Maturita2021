@@ -12,7 +12,8 @@ const HomeScreen = () => {
 	return (
 		<div className="home router-content">
 			<div className="header-title">
-				<h1>Regione Toscana</h1>
+				<h1>Autostrade Toscana Manutenzione Infrastrutture</h1>
+				<h2>ATMI</h2>
 				<h6>Stato di manutenzione di Ponti e Viadotti in Toscana</h6>
 				<h6>Appalti e bandi di manutenzione</h6>
 			</div>
@@ -20,16 +21,16 @@ const HomeScreen = () => {
 				<pre style={{marginLeft: 30}}>{JSON.stringify(user, null, 2)}</pre>
 				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
 					setUser({
-						nome:"pippo" , 
+						email:"pippo@atmi.it" , 
 						categoria: "Societa Manutenzione",
 						disponibilitaParametri: ["Asfalto", "Struttura"]
 					});
 				}}>Soc Manutenzione</button>
 				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({nome:"pippo", categoria: "Societa Autostrada"});
+					setUser({email:"pippo@atmi.it", categoria: "Societa Autostrada"});
 				}}>Soc Autostrada</button>
 				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({nome:"pippo", categoria: "Ministero"});
+					setUser({email:"pippo@atmi.it", categoria: "Ministero"});
 				}}>Ministero</button>
 			</div>
 		</div>

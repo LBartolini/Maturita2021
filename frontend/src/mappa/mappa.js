@@ -7,6 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import GlobalVar from "@src/GlobalVar.js";
 import './mappa.css';
 import 'leaflet/dist/leaflet.css';
+import Logout from "@src/logout.js";
 
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -22,37 +23,31 @@ L.Marker.prototype.options.icon = DefaultIcon;
 const Mappa = () => {
 	const {user, setUser} = useContext(UserContext);
 	const history = useHistory();
-	const [markers, setMarkers] = useState([{
-		position: [43.869560, 12.5558136],
-		nome: "ponte X",
-		id: 0
-	},
-	{
-		position: [43.769560, 10.5558136],
-		nome: "ponte X",
-		id: 1
-	},
-	{
-		position: [43.469560, 11.2558136],
-		nome: "ponte X",
-		id: 2
-	},
-	{
-		position: [43.169560, 10.7558136],
-		nome: "ponte X",
-		id: 3
-	},
-	{
-		position: [44.769560, 11.6558136],
-		nome: "ponte X",
-		id: 4
-	},
-	{
-		position: [45.769560, 10.7558136],
-		nome: "ponte X",
-		id: 5
-	}]);
+	const [markers, setMarkers] = useState([]);
 	const starter_position = [43.416667, 11]
+
+	const fetchPuntiMappa = () => {
+		fetch(GlobalVar.urlAPI+'/punti-mappa.php', {
+            method: 'GET',
+            headers: {
+                "Authentication": GlobalVar.token
+            }
+        }) 
+        .then(response => {
+            if(response.status == 200){
+                return response.json();
+            }else{
+                setUser(null);
+				GlobalVar.token = "";
+				history.push("/");
+                throw new Error;
+            }
+        })
+        .then(data => {
+			setMarkers(data);
+		})
+        .catch(err => console.log(err));
+	}
 
 	useEffect(() => {
 		//controllo utente
@@ -62,6 +57,9 @@ const Mappa = () => {
 				setUser(null);
 				GlobalVar.token = "";
 				history.push("/");
+			}else{
+				// accenso consentito
+				fetchPuntiMappa();
 			}
 		}else{
 			//utente non ha fatto l'accesso
@@ -79,11 +77,11 @@ const Mappa = () => {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 				{markers.map((marker) => {
-					return (<Marker position={marker.position} key={marker.id}>
+					return (<Marker position={marker.Coordinate} key={marker.Id}>
 						<Popup>
-							<p>{marker.nome}</p>
-							<br />
-							<button onClick={() => history.push('/infr-info/' + marker.id)}>INFO</button>
+							<p>{marker.Nome}</p>
+							<p>Autostrada {marker.Autostrada}</p>
+							<button onClick={() => history.push('/infr-info/' + marker.Id)}>INFO</button>
 						</Popup>
 					</Marker>)
 				})

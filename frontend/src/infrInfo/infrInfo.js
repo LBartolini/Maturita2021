@@ -29,6 +29,7 @@ const InfrInfo = () => {
 	};
 
 	const fetchDatiManutenzione = () => {
+		// TODO
 		fetch("http://localhost:5555/dati-esempio").then(response => response.json())
 			.then(data => {
 				setDatiManutenzione(data);
