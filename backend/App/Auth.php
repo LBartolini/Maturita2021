@@ -16,8 +16,8 @@ class Auth extends Database
     public function createToken($email)
     {
 
-        $expiration = time() + 1800; //30 minuti
-        $issuer = 'easybreak_localhost';
+        $expiration = time() + 3600; //60 minuti
+        $issuer = 'atmi_localhost';
 
         $token = Token::create($email, $this->secret, $expiration, $issuer);
         return $token;

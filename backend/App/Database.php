@@ -7,10 +7,10 @@ use mysqli;
 class Database
 {
     protected $connessione;
-    protected $servername = "89.46.111.134";
-    protected $username = "Sql1520781";
-    protected $password = "Itcatlov_1";
-    protected $database = "Sql1520781_2";
+    protected $servername = "localhost";
+    protected $username = "atmi";
+    protected $password = "atmi";
+    protected $database = "ATMI";
 
     public function __construct()
     {
@@ -19,29 +19,29 @@ class Database
 
     public function emailExist($email)
     {
-        //TODO
-        $queryB = sprintf("SELECT email
-                        FROM Bar
-                        WHERE email='%s'", $email);
+        $prep = $this->connessione->prepare("SELECT Email
+                        	FROM Utente
+							WHERE Email=?");
         
-        $queryU = sprintf("SELECT email
-                        FROM Utente
-                        WHERE email='%s'", $email);
+		$prep->bind_param("s", $email);
+		$prep->execute();
+		$result = $prep->get_result();
 
-        $resultB = $this->queryWithResults($queryB);
+		$arr = [];
 
-        $resultU = $this->queryWithResults($queryU);
+		while($row = $result->fetch_assoc()){
+			$arr[] = $row["Email"];
+		}
 
-        if(sizeof($resultB) > 0){
-            // user is BAR
-            return "bar";
-        }else if(sizeof($resultU) > 0){
-            // user is UTENTE
-            return "utente";
+		print_r($arr);
+
+        if(sizeof($arr) > 0){
+            // email presente
+            return true;
         }
 
         // email non presente nel DB
-        return "null";
+        return false;
     }
 
     public function query($query)

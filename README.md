@@ -2,6 +2,8 @@
 
 Progetto per Esame di Stato 2020/21
 
+ATMI - Autostrade Toscana Manutenzione Infrastrutture
+
 ## Link Utili
 
 https://it.reactjs.org/docs/create-a-new-react-app.html#create-react-app
@@ -16,7 +18,15 @@ https://www.php.net/manual/en/function.password-hash.php
 
 https://github.com/benawad/react-hooks-tutorial/tree/7_useContext
 
+http://www.autostrade.it/documents/10279/32570951/20190915_Dettaglio_Opere_Darte_Maggiori_Ponti_e_Viadotti_v1.1.pdf
 
+(lista ponti e viadotti italia)
+
+### Utenti e Password
+
+autostrada@atmi.it - autostrada
+ministero@atmi.it - ministero
+socman1@atmi.it - socman1
 
 ## Approfondimenti
 

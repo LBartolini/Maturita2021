@@ -11,7 +11,10 @@ require_once "vendor/autoload.php";
 //     echo json_encode("metodo non valido, richiesto metodo POST");
 //     exit;
 // }
-echo "prova";
+
+$db = new App\Database();
+
+$db->emailExist("autostrada@atmi.it");
 
 // $rest_json = file_get_contents("php://input");
 // $post_json = json_decode($rest_json, true);
