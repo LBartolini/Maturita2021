@@ -11,7 +11,7 @@ const AppaltiScreen = () => {
 	const { user, setUser } = useContext(UserContext);
 	const history = useHistory();
 	const [appalti, setAppalti] = useState([]);
-	const [filtroParam, setFiltroParam] = useState("Tutti");
+	const [filtroParam, setFiltroParam] = useState("...");
 
 	useEffect(() => {
 		// viene eseguito ad ogni render
@@ -47,14 +47,14 @@ const AppaltiScreen = () => {
 					</Dropdown.Toggle>
 					{user && user.categoria == "Societa Manutenzione" ?
 						<Dropdown.Menu>
-							<Dropdown.Item key={0} onClick={() => { setFiltroParam("Tutti") }}>Tutti</Dropdown.Item>
+							<Dropdown.Item key={0} onClick={() => { setFiltroParam("...") }}>...</Dropdown.Item>
 							{
 								user.disponibilitaParametri.map((val, idx) => <Dropdown.Item key={idx} onClick={() => { setFiltroParam(val) }}>{val}</Dropdown.Item>)
 							}
 						</Dropdown.Menu>
 						:
 						<Dropdown.Menu>
-							<Dropdown.Item key={0} onClick={() => { setFiltroParam("Tutti") }}>Tutti</Dropdown.Item>
+							<Dropdown.Item key={0} onClick={() => { setFiltroParam("...") }}>...</Dropdown.Item>
 							<Dropdown.Item key={1} onClick={() => { setFiltroParam("Elettricita Alta") }}>Elettricita Alta</Dropdown.Item>
 							<Dropdown.Item key={2} onClick={() => { setFiltroParam("Elettricita Bassa") }}>Elettricita Bassa</Dropdown.Item>
 							<Dropdown.Item key={3} onClick={() => { setFiltroParam("Asfalto") }}>Asfalto</Dropdown.Item>

@@ -1,5 +1,6 @@
 const GlobalVar = {
-	urlAPI: "http://127.0.0.1:5555"
+	urlAPI: "http://localhost:8000",
+	token: ""
 };
 
 

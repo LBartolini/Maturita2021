@@ -5,6 +5,7 @@ import {
 import './infrastrutture.css';
 import {UserContext} from "@src/UserContext.js";
 import Infrastruttura from './components/infrastruttura.js';
+import GlobalVar from "@src/GlobalVar.js";
 
 
 const InfrScreen = () => {
@@ -17,6 +18,7 @@ const InfrScreen = () => {
 			//utente logged in
 			if(user.categoria == "Societa Manutenzione"){
 				setUser(null);
+				GlobalVar.token = "";
 				history.push("/");
 			}
 		}else{

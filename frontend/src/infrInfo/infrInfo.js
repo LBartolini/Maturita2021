@@ -41,6 +41,7 @@ const InfrInfo = () => {
 			//utente logged in
 			if(user.categoria == "Societa Manutenzione"){
 				setUser(null);
+				GlobalVar.token = "";
 				history.push("/");
 			}
 		}else{

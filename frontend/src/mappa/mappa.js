@@ -4,6 +4,7 @@ import {
 	useHistory
 } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import GlobalVar from "@src/GlobalVar.js";
 import './mappa.css';
 import 'leaflet/dist/leaflet.css';
 
@@ -59,6 +60,7 @@ const Mappa = () => {
 			//utente logged in
 			if(user.categoria == "Societa Manutenzione"){
 				setUser(null);
+				GlobalVar.token = "";
 				history.push("/");
 			}
 		}else{
