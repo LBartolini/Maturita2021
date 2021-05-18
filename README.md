@@ -22,6 +22,10 @@ http://www.autostrade.it/documents/10279/32570951/20190915_Dettaglio_Opere_Darte
 
 (lista ponti e viadotti italia)
 
+https://s3.amazonaws.com/scribblelive-com-prod/wp-content/uploads/sites/4/2020/10/CSR.png
+
+(immagine client side rendering in react)
+
 ### Utenti e Password
 
 autostrada@atmi.it - autostrada
