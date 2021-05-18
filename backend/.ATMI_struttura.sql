@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Mag 16, 2021 alle 16:14
+-- Creato il: Mag 18, 2021 alle 16:38
 -- Versione del server: 8.0.25-0ubuntu0.20.04.1
 -- Versione PHP: 7.4.3
 
@@ -136,7 +136,7 @@ CREATE TABLE `SocietaManutenzione` (
 CREATE TABLE `StoricoRilevazioni` (
   `Sensore` int NOT NULL,
   `CodiceInfr` int NOT NULL,
-  `DataRilevazione` datetime NOT NULL,
+  `DataRilevazione` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Valore` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

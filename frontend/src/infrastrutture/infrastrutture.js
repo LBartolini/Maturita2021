@@ -26,14 +26,26 @@ const InfrScreen = () => {
 			history.push("/");
 		}
 
-		const x = [];
-		for(let i = 0; i<10; i++){
-			x.push({
-				id: i,
-				nome: "Ponte"
-			})
-		}
-		setInfr(x);
+		fetch(GlobalVar.urlAPI+'/infrastrutture.php', {
+            method: 'GET',
+            headers: {
+                "Authentication": GlobalVar.token
+            }
+        }) 
+        .then(response => {
+            if(response.status == 200){
+                return response.json();
+            }else{
+                setUser(null);
+				GlobalVar.token = "";
+				history.push("/");
+                throw new Error;
+            }
+        })
+        .then(data => {
+			setInfr(data);
+		})
+        .catch(err => console.log(err));
 	}, []);
 
 	return (

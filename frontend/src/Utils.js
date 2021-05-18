@@ -26,6 +26,28 @@ const scegliColoreGrafico = (parametro) => {
 	}
 }
 
+function formatDate(date){
+
+    var dd = date.getDate();
+    var mm = date.getMonth()+1;
+    var yyyy = date.getFullYear();
+    if(dd<10) {dd='0'+dd}
+    if(mm<10) {mm='0'+mm}
+    date = dd+'/'+mm+'/'+yyyy;
+    return date
+ }
+
+function LastDays (n) {
+    var result = [];
+    for (var i=0; i<n; i++) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        result.push( formatDate(d) )
+    }
+
+    return result;
+}
+
 const trovaColoreStato = (valoreStato) => {
 	if(valoreStato > 75){
 		return "green";
@@ -40,4 +62,4 @@ const trovaColoreStato = (valoreStato) => {
 
 }
 
-export { trovaColoreProgressBar, trovaColoreStato, scegliColoreGrafico };
+export { trovaColoreProgressBar, trovaColoreStato, scegliColoreGrafico, LastDays };

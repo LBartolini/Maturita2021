@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Creato il: Mag 16, 2021 alle 16:15
+-- Creato il: Mag 18, 2021 alle 16:38
 -- Versione del server: 8.0.25-0ubuntu0.20.04.1
 -- Versione PHP: 7.4.3
 
@@ -58,12 +58,48 @@ INSERT INTO `Parametro` (`Parametro`) VALUES
 ('Struttura');
 
 --
+-- Dump dei dati per la tabella `Sensore`
+--
+
+INSERT INTO `Sensore` (`IdSensore`, `Parametro`) VALUES
+(1, 'Asfalto'),
+(4, 'Asfalto'),
+(7, 'Asfalto'),
+(10, 'Asfalto'),
+(2, 'Elettricita'),
+(5, 'Elettricita'),
+(8, 'Elettricita'),
+(11, 'Elettricita'),
+(3, 'Struttura'),
+(6, 'Struttura'),
+(9, 'Struttura'),
+(12, 'Struttura');
+
+--
 -- Dump dei dati per la tabella `SocietaManutenzione`
 --
 
 INSERT INTO `SocietaManutenzione` (`Utente`, `DataRegistrazione`) VALUES
 ('socman1@atmi.it', '2021-05-16 11:57:58'),
 ('socman2@atmi.it', '2021-05-16 16:13:35');
+
+--
+-- Dump dei dati per la tabella `StoricoRilevazioni`
+--
+
+INSERT INTO `StoricoRilevazioni` (`Sensore`, `CodiceInfr`, `DataRilevazione`, `Valore`) VALUES
+(1, 1, '2021-05-18 15:46:53', 100),
+(2, 1, '2021-05-18 15:46:59', 100),
+(3, 1, '2021-05-18 15:47:06', 100),
+(4, 2, '2021-05-18 15:48:45', 100),
+(5, 2, '2021-05-18 15:48:52', 100),
+(6, 2, '2021-05-18 15:49:01', 100),
+(7, 3, '2021-05-18 15:49:38', 100),
+(8, 3, '2021-05-18 15:49:53', 100),
+(9, 3, '2021-05-18 15:49:53', 100),
+(10, 4, '2021-05-18 15:50:57', 100),
+(11, 4, '2021-05-18 15:50:57', 100),
+(12, 4, '2021-05-18 15:50:57', 100);
 
 --
 -- Dump dei dati per la tabella `Utente`

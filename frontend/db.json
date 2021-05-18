@@ -7,15 +7,11 @@
 			},
 			{
 				"parametro": "Struttura",
-				"values": [90, 90, 68, 40, 28, 52, 10, 9, 43]
+				"values": [90, 90, 68, 40, 28, 35, 52, 10, 9]
 			},
 			{
-				"parametro": "Elettricita Alta",
+				"parametro": "Elettricita",
 				"values": [10, 90, 68, 56, 50, 80, 10, 9, 43]
-			},
-			{
-				"parametro": "Elettricita Bassa",
-				"values": [36, 80, 68, 40, 50, 30, 10, 9, 95]
 			}
 		],
 		"labels": [

@@ -71,7 +71,7 @@ const Mappa = () => {
 
 	return (
 		<div className="mappa">
-			<MapContainer center={starter_position} zoom={9} scrollWheelZoom={true} className="map-component">
+			<MapContainer center={starter_position} zoom={8} scrollWheelZoom={true} className="map-component">
 				<TileLayer
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
