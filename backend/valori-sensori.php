@@ -51,14 +51,13 @@ while($row = $result->fetch_assoc()){
 	$sensori[] = $row;
 }
 
-// TODO prendere i dati dei sensori e formattarli ricordandosi delle date strane...
 $parametri = [];
 foreach($sensori as $sens){
 	$idSens = $sens['IdSensore'];
 	$last = $user->query("SELECT Valore
 			FROM StoricoRilevazioni
 			WHERE Sensore=$idSens
-			ORDER BY DATE(DataRilevazione)
+			ORDER BY DataRilevazione DESC
 			LIMIT 15");
 	
 	$valori = [];
@@ -79,7 +78,7 @@ $prep = $user->connessione->prepare("SELECT DISTINCT(DATE(DataRilevazione)) AS d
                 FROM Sensore
 				WHERE Infrastruttura=? 
 			) 
-			ORDER BY DataRilevazione 
+			ORDER BY DataRilevazione DESC
 			LIMIT 15");    
 $prep->bind_param("i", $idInfr);
 $prep->execute();
@@ -93,7 +92,6 @@ $to_send = array(
 	"parametri" => $parametri,
 	"labels" => $date
 );
-
 
 
 header('Content-type:application/json;charset=utf-8');

@@ -87,6 +87,56 @@ class Database
 		}
 	}
 
+	public function checkAppaltoAperto($CodiceInfr, $Parametro){
+		$query = "SELECT * 
+					FROM Appalto
+					WHERE Infrastruttura=$CodiceInfr AND Parametro=$Parametro
+					AND IdAppalto IN (SELECT Appalto
+							FROM AppaltoAperto)";
+
+		$res = $this->query($query);
+
+		if($res->size > 0){
+			// è già aperto un appalto per quel parametro
+			return true;
+		}
+		// NON c'è un appalto paerto per quel parametro
+		return false;
+	}
+
+	public function indiciAppalto($idSensore){
+		$query = "SELECT * 
+					FROM Sensore
+					WHERE IdSensore=$idSensore";
+
+		$res = $this->query($query);
+		$CodiceInfr = $res->Infrastruttura;
+		$Parametro = $res->Parametro;
+
+		if(checkAppaltoAperto($CodiceInfr, $Parametro)){
+			// appalto già aperto
+			return false;
+		}
+
+		$query = "INSERT INTO Appalto ('Parametro', 'Infrastruttura')
+				VALUES ($Parametro, $CodiceInfr)";
+
+		$this->query($query);
+
+		$query = "SELECT IdAppalto
+					FROM Appalto
+					WHERE Infrastruttura=$CodiceInfr AND Parametro=$Parametro
+					ORDER BY DataApertura DESC
+					LIMIT 1";
+
+		$IdAppalto = $this->query($query);
+
+		$query = "INSERT INTO AppaltoAperto ('Appalto')
+				VALUES ($IdAppalto)";
+
+		$this->query($query);
+	}
+
     public function query($query)
     {
         $result = $this->connessione->query($query);
