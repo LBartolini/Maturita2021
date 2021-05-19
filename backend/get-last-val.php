@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'GET') {
 
 $idSensore = $_GET["id"];
 $limite = $_GET["limite"];
-
+#TODO fixare ordine delle date inviate ai sensori
 $user = new App\Database();
 
 $results = $user->query("SELECT DATE(DataRilevazione) as data, Valore

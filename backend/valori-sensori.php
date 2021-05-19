@@ -67,7 +67,7 @@ foreach($sensori as $sens){
 
 	$parametri[] = array(
 		"parametro" => $sens["Parametro"],
-		"values" => $valori
+		"values" => array_reverse($valori)
 	);
 }
 
@@ -78,7 +78,7 @@ $prep = $user->connessione->prepare("SELECT DISTINCT(DATE(DataRilevazione)) AS d
                 FROM Sensore
 				WHERE Infrastruttura=? 
 			) 
-			ORDER BY DataRilevazione DESC
+			ORDER BY DATE(DataRilevazione) DESC
 			LIMIT 15");    
 $prep->bind_param("i", $idInfr);
 $prep->execute();
@@ -90,7 +90,7 @@ while($row = $result->fetch_assoc()){
 
 $to_send = array(
 	"parametri" => $parametri,
-	"labels" => $date
+	"labels" => array_reverse($date)
 );
 
 

@@ -113,12 +113,12 @@ class Database
 		$CodiceInfr = $res->Infrastruttura;
 		$Parametro = $res->Parametro;
 
-		if(checkAppaltoAperto($CodiceInfr, $Parametro)){
+		if($this->checkAppaltoAperto($CodiceInfr, $Parametro)){
 			// appalto già aperto
 			return false;
 		}
 
-		$query = "INSERT INTO Appalto ('Parametro', 'Infrastruttura')
+		$query = "INSERT INTO Appalto (`Parametro`, `Infrastruttura`)
 				VALUES ($Parametro, $CodiceInfr)";
 
 		$this->query($query);
@@ -131,7 +131,7 @@ class Database
 
 		$IdAppalto = $this->query($query);
 
-		$query = "INSERT INTO AppaltoAperto ('Appalto')
+		$query = "INSERT INTO AppaltoAperto (`Appalto`)
 				VALUES ($IdAppalto)";
 
 		$this->query($query);

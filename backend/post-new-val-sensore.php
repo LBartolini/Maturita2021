@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 
 // METHOD POST
 
@@ -12,13 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     exit;
 }
 
-$idSensore = $_GET["id"];
-$val = $_GET["valore"];
+$idSensore = $_POST['id'];
+$val = $_POST['valore'];
 
 $user = new App\Database();
 
-$results = $user->query("INSERT INTO StoricoRilevazioni ('Sensore', 'Valore')
-						VALUES ($idSensore, $val)");
+$query = "INSERT INTO StoricoRilevazioni (`Sensore`, `Valore`)
+VALUES ($idSensore, $val)";
+
+echo $query;
+
+$results = $user->query($query);
 
 if($val < 30){
 	$user->indiciAppalto($idSensore);
