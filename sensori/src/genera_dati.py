@@ -22,12 +22,17 @@ def nuovo_dato(last_punti, prob_base_stazionare=0.9, max_decaduta=0.05, momentum
 	if verbose: print("prob BASE staz ", prob_base_stazionare)
 
 	if np.random.random() < prob_staz:
+		if verbose: print("Stazionamento!")
 		return last_punti[-1][0] # last array con gli ultimi 3 punti (x, y)
 	else:
 		# trovare nuovo valore
 		offset = (min(abs(momentum), 4)*2)/100 # momentum influenza al massimo l'8% del nuovo valore
 		delta = np.random.randint(last_punti[-1][0]*offset, last_punti[-1][0]*offset+last_punti[-1][0]*max_decaduta)
+		if verbose: print("Min ",last_punti[-1][0]*offset)
+		if verbose: print("Max ",last_punti[-1][0]*offset+last_punti[-1][0]*max_decaduta)
 		if verbose: print("Delta ",delta)
+		if verbose: print("Offset ",offset)
+		
 		return last_punti[-1][0]-delta
 
 def trova_rischio(last_punti, punti_momentum):

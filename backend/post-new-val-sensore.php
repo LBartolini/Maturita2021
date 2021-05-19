@@ -20,9 +20,7 @@ $user = new App\Database();
 $query = "INSERT INTO StoricoRilevazioni (`Sensore`, `Valore`)
 VALUES ($idSensore, $val)";
 
-echo $query;
-
-$results = $user->query($query);
+$results = $user->query($query, false);
 
 if($val < 30){
 	$user->indiciAppalto($idSensore);

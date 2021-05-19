@@ -90,13 +90,13 @@ class Database
 	public function checkAppaltoAperto($CodiceInfr, $Parametro){
 		$query = "SELECT * 
 					FROM Appalto
-					WHERE Infrastruttura=$CodiceInfr AND Parametro=$Parametro
+					WHERE Infrastruttura=$CodiceInfr AND Parametro='$Parametro'
 					AND IdAppalto IN (SELECT Appalto
 							FROM AppaltoAperto)";
 
 		$res = $this->query($query);
 
-		if($res->size > 0){
+		if(sizeof($res) > 0){
 			// è già aperto un appalto per quel parametro
 			return true;
 		}
@@ -106,10 +106,10 @@ class Database
 
 	public function indiciAppalto($idSensore){
 		$query = "SELECT * 
-					FROM Sensore
-					WHERE IdSensore=$idSensore";
+					FROM `Sensore`
+					WHERE `IdSensore`=$idSensore";
 
-		$res = $this->query($query);
+		$res = $this->query($query)[0];
 		$CodiceInfr = $res->Infrastruttura;
 		$Parametro = $res->Parametro;
 
@@ -118,30 +118,32 @@ class Database
 			return false;
 		}
 
-		$query = "INSERT INTO Appalto (`Parametro`, `Infrastruttura`)
-				VALUES ($Parametro, $CodiceInfr)";
+		$query = "INSERT INTO Appalto (Parametro, Infrastruttura)
+				VALUES ('$Parametro', $CodiceInfr)";
 
-		$this->query($query);
+		$this->query($query, false);
 
 		$query = "SELECT IdAppalto
 					FROM Appalto
-					WHERE Infrastruttura=$CodiceInfr AND Parametro=$Parametro
+					WHERE Infrastruttura=$CodiceInfr AND Parametro='$Parametro'
 					ORDER BY DataApertura DESC
 					LIMIT 1";
 
-		$IdAppalto = $this->query($query);
+		$IdAppalto = $this->query($query)[0]->IdAppalto;
 
-		$query = "INSERT INTO AppaltoAperto (`Appalto`)
-				VALUES ($IdAppalto)";
+		$query = "INSERT INTO AppaltoAperto (Appalto)
+				VALUES ('$IdAppalto')";
 
 		$this->query($query);
+
+		return true;
 	}
 
-    public function query($query)
+    public function query($query, $acceptResults=true)
     {
         $result = $this->connessione->query($query);
         $items = [];
-        if($result->num_rows > 0){
+        if($acceptResults && $result->num_rows > 0){
             while ($element = mysqli_fetch_object($result)) {
                 $items[] = $element;
             }
