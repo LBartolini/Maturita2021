@@ -7,7 +7,7 @@ use mysqli;
 class Database
 {
     public $connessione;
-    protected $servername = "localhost";
+    protected $servername = "127.0.0.1";
     protected $username = "atmi";
     protected $password = "atmi";
     protected $database = "ATMI";
@@ -18,7 +18,7 @@ class Database
     }
 
     public function emailExist($email)
-    {
+    {	
         $prep = $this->connessione->prepare("SELECT Email
                         	FROM Utente
 							WHERE Email=?");

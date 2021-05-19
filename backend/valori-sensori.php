@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
+header('Access-Control-Allow-Headers: Authentication, Content-Type');
 
 // METHOD GET
 
@@ -40,19 +40,61 @@ if(!($user->validate($token))){
 
 $idInfr = $_GET["id"];
 
-$prep = $user->connessione->prepare("SELECT Nome, Autostrada, Autostrada, IndiceBonta
-                        	FROM Infrastruttura
-							WHERE CodiceInfr=?");    
+$prep = $user->connessione->prepare("SELECT IdSensore, Parametro
+                        	FROM Sensore
+							WHERE Infrastruttura=?");    
 $prep->bind_param("i", $idInfr);
 $prep->execute();
 $result = $prep->get_result();
-$arr = [];
+$sensori = [];
 while($row = $result->fetch_assoc()){
-	$arr[] = $row;
+	$sensori[] = $row;
 }
 
 // TODO prendere i dati dei sensori e formattarli ricordandosi delle date strane...
+$parametri = [];
+foreach($sensori as $sens){
+	$idSens = $sens['IdSensore'];
+	$last = $user->query("SELECT Valore
+			FROM StoricoRilevazioni
+			WHERE Sensore=$idSens
+			ORDER BY DATE(DataRilevazione)
+			LIMIT 15");
+	
+	$valori = [];
+	foreach($last as $val){
+		$valori[] = (float) $val->Valore;
+	}
+
+	$parametri[] = array(
+		"parametro" => $sens["Parametro"],
+		"values" => $valori
+	);
+}
+
+$prep = $user->connessione->prepare("SELECT DISTINCT(DATE(DataRilevazione)) AS data 
+			FROM StoricoRilevazioni
+			WHERE Sensore IN (
+				SELECT IdSensore
+                FROM Sensore
+				WHERE Infrastruttura=? 
+			) 
+			ORDER BY DataRilevazione 
+			LIMIT 15");    
+$prep->bind_param("i", $idInfr);
+$prep->execute();
+$result = $prep->get_result();
+$date = [];
+while($row = $result->fetch_assoc()){
+	$date[] = $row["data"];
+}
+
+$to_send = array(
+	"parametri" => $parametri,
+	"labels" => $date
+);
+
 
 
 header('Content-type:application/json;charset=utf-8');
-echo json_encode($to_send[0]);
+echo json_encode($to_send);

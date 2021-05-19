@@ -29,11 +29,26 @@ const InfrInfo = () => {
 	};
 
 	const fetchDatiManutenzione = () => {
-		// TODO
-		fetch("http://localhost:5555/dati-esempio").then(response => response.json())
-			.then(data => {
-				setDatiManutenzione(data);
-			});
+		fetch(GlobalVar.urlAPI+'/valori-sensori.php?id='+id, {
+            method: 'GET',
+            headers: {
+                "Authentication": GlobalVar.token
+            }
+        }) 
+        .then(response => {
+            if(response.status == 200){
+                return response.json();
+            }else{
+                setUser(null);
+				GlobalVar.token = "";
+				history.push("/");
+                throw new Error;
+            }
+        })
+        .then(data => {
+			setDatiManutenzione(data);
+		})
+        .catch(err => console.log(err));
 	}
 
 	useEffect(() => {
@@ -87,7 +102,7 @@ const InfrInfo = () => {
 						<button onClick={() => { fetchDatiManutenzione() }}>Aggiorna dati</button>
 						{user && user.categoria == "Societa Autostrada" ?
 							<div className="infr-btns-appalto">
-								<button onClick={() => {console.log(LastDays(20))}}>Indici Appalto</button>
+								<button onClick={() => {}}>Indici Appalto</button>
 								<h5>per parametro:</h5>
 								<Dropdown>
 									<Dropdown.Toggle style={{color: "black"}}>

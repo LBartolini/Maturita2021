@@ -56,8 +56,7 @@ $infr = $arr[0];
 $parametri = [];
 $prep = $user->connessione->prepare("SELECT DISTINCT(S.Parametro)
                         FROM Sensore as S
-						INNER JOIN StoricoRilevazioni as SR ON S.IdSensore=SR.Sensore
-						WHERE SR.CodiceInfr=?");    
+						WHERE S.Infrastruttura=?");    
 $prep->bind_param("i", $idInfr);
 $prep->execute();
 $result = $prep->get_result();
