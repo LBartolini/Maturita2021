@@ -17,17 +17,14 @@ const InfrInfo = () => {
 	const history = useHistory();
 
 	const options = {
-		scales: {
-			yAxes: [
-				{
-					ticks: {
-						beginAtZero: true,
-					},
-				},
-			],
-		},
+		scales : {
+			y : {
+				min: 0,
+				max: 110,
+			}
+		}
 	};
-
+	
 	const fetchDatiManutenzione = () => {
 		fetch(GlobalVar.urlAPI+'/valori-sensori.php?id='+id, {
             method: 'GET',
