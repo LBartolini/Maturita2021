@@ -8,7 +8,7 @@ BASE_URL = "http://localhost:8000"
 
 def main():
     verbose = True
-    send_data = False
+    send_data = True
     r = requests.get(BASE_URL+"/get-sensori.php")
     sensori = r.json()
 
@@ -22,7 +22,7 @@ def main():
         r = requests.get(BASE_URL+"/get-last-val.php", params=params)
         val = r.json()
         last_values = [(datetime.datetime.strptime(
-            x["data"], "%Y-%m-%d %H:%M:%S").timestamp(), float(x["Valore"])) for x in reversed(val)]
+            x["data"], "%Y-%m-%d").timestamp(), float(x["Valore"])) for x in reversed(val)]
         nuovo = nuovo_dato(last_values, momentum_mult=1,
                            max_decaduta=0.05, punti_momentum=3, verbose=verbose)
         params = {

@@ -166,6 +166,10 @@ class Database
 		return true;
 	}
 
+	public function ricalcolaIndiceBonta($IdSensore){
+		// TODO Ricalcolare indice bonta dell'infrastruttura collegata
+	}
+
     public function query($query, $acceptResults=true)
     {
         $result = $this->connessione->query($query);

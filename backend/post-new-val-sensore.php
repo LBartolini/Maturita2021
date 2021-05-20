@@ -17,12 +17,12 @@ $val = $_POST['valore'];
 
 $user = new App\Database();
 
-$query = "INSERT INTO StoricoRilevazioni (`Sensore`, `Valore`)
-VALUES ($idSensore, $val)";
+$query = "INSERT INTO StoricoRilevazioni (`Sensore`, `Valore`, `DataRilevazione`)
+VALUES ($idSensore, $val, CURDATE())";
 
-$results = $user->query($query, false);
+$user->query($query, false);
 
-// TODO aggiornare attributi IndiceBonta calcolando ogni volta la media degli ultimi valori dei sensori
+$user->ricalcolaIndiceBonta($idSensore);
 
 if($val < 30){
 	$user->indiciAppalto($idSensore);

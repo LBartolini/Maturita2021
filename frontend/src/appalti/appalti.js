@@ -21,8 +21,7 @@ const AppaltiScreen = () => {
 		}
 	});
 
-	useEffect(() => {
-		// viene eseguito quando cambia il filtro
+	const aggiornaDati = () => {
 		fetch(GlobalVar.urlAPI+'/appalti-aperti.php?filtro='+filtroParam+'&cat='+user.categoria, {
             method: 'GET',
             headers: {
@@ -43,6 +42,11 @@ const AppaltiScreen = () => {
 			setAppalti(data);
 		})
         .catch(err => console.log(err));
+	}
+
+	useEffect(() => {
+		// viene eseguito quando cambia il filtro
+		aggiornaDati();
 	}, [filtroParam, setFiltroParam]);
 
 	return (
@@ -71,7 +75,7 @@ const AppaltiScreen = () => {
 			</div>
 
 			<ul className="appalti-ul">
-				{appalti.map((app, idx) => <li key={idx} className="infr-li"><Appalto appalto={app} /></li>)}
+				{appalti.map((app, idx) => <li key={idx} className="infr-li"><Appalto appalto={app} aggiornaDati={() => aggiornaDati()}/></li>)}
 			</ul>
 		</div>
 	);

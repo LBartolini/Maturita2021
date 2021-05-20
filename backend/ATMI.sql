@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Creato il: Mag 19, 2021 alle 09:40
--- Versione del server: 10.4.18-MariaDB
--- Versione PHP: 8.0.3
+-- Host: localhost:3306
+-- Creato il: Mag 20, 2021 alle 19:19
+-- Versione del server: 8.0.25-0ubuntu0.20.04.1
+-- Versione PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,17 +29,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Appalto` (
-  `IdAppalto` int(11) NOT NULL,
-  `DataApertura` datetime NOT NULL DEFAULT current_timestamp(),
+  `IdAppalto` int NOT NULL,
+  `DataApertura` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Parametro` varchar(32) NOT NULL,
-  `Infrastruttura` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Infrastruttura` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Svuota la tabella prima dell'inserimento `Appalto`
+-- Dump dei dati per la tabella `Appalto`
 --
 
-TRUNCATE TABLE `Appalto`;
+INSERT INTO `Appalto` (`IdAppalto`, `DataApertura`, `Parametro`, `Infrastruttura`) VALUES
+(9, '2021-05-20 19:15:42', 'Struttura', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -46,14 +49,9 @@ TRUNCATE TABLE `Appalto`;
 --
 
 CREATE TABLE `AppaltoAperto` (
-  `Appalto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Appalto` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `AppaltoAperto`
---
-
-TRUNCATE TABLE `AppaltoAperto`;
 -- --------------------------------------------------------
 
 --
@@ -61,16 +59,18 @@ TRUNCATE TABLE `AppaltoAperto`;
 --
 
 CREATE TABLE `AppaltoConcluso` (
-  `Appalto` int(11) NOT NULL,
-  `DataEsecuzioneIntervento` datetime NOT NULL DEFAULT current_timestamp(),
-  `SocietaManutenzione` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Appalto` int NOT NULL,
+  `DataEsecuzioneIntervento` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `SocietaManutenzione` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Svuota la tabella prima dell'inserimento `AppaltoConcluso`
+-- Dump dei dati per la tabella `AppaltoConcluso`
 --
 
-TRUNCATE TABLE `AppaltoConcluso`;
+INSERT INTO `AppaltoConcluso` (`Appalto`, `DataEsecuzioneIntervento`, `SocietaManutenzione`) VALUES
+(9, '2021-05-20 19:15:50', 'socman2@atmi.it');
+
 -- --------------------------------------------------------
 
 --
@@ -79,14 +79,9 @@ TRUNCATE TABLE `AppaltoConcluso`;
 
 CREATE TABLE `Autostrada` (
   `Codice` varchar(4) NOT NULL,
-  `Lunghezza` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Lunghezza` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `Autostrada`
---
-
-TRUNCATE TABLE `Autostrada`;
 --
 -- Dump dei dati per la tabella `Autostrada`
 --
@@ -103,13 +98,8 @@ INSERT INTO `Autostrada` (`Codice`, `Lunghezza`) VALUES
 CREATE TABLE `Disponibilita` (
   `Parametro` varchar(32) NOT NULL,
   `SocietaManutenzione` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `Disponibilita`
---
-
-TRUNCATE TABLE `Disponibilita`;
 --
 -- Dump dei dati per la tabella `Disponibilita`
 --
@@ -126,20 +116,15 @@ INSERT INTO `Disponibilita` (`Parametro`, `SocietaManutenzione`) VALUES
 --
 
 CREATE TABLE `Infrastruttura` (
-  `CodiceInfr` int(11) NOT NULL,
+  `CodiceInfr` int NOT NULL,
   `Nome` varchar(32) NOT NULL,
   `IndiceBonta` float NOT NULL,
   `Latitudine` double NOT NULL,
   `Longitudine` double NOT NULL,
   `Tipo` varchar(32) NOT NULL,
   `Autostrada` varchar(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `Infrastruttura`
---
-
-TRUNCATE TABLE `Infrastruttura`;
 --
 -- Dump dei dati per la tabella `Infrastruttura`
 --
@@ -158,13 +143,8 @@ INSERT INTO `Infrastruttura` (`CodiceInfr`, `Nome`, `IndiceBonta`, `Latitudine`,
 
 CREATE TABLE `Parametro` (
   `Parametro` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `Parametro`
---
-
-TRUNCATE TABLE `Parametro`;
 --
 -- Dump dei dati per la tabella `Parametro`
 --
@@ -181,16 +161,11 @@ INSERT INTO `Parametro` (`Parametro`) VALUES
 --
 
 CREATE TABLE `Sensore` (
-  `IdSensore` int(11) NOT NULL,
+  `IdSensore` int NOT NULL,
   `Parametro` varchar(32) NOT NULL,
-  `Infrastruttura` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Infrastruttura` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `Sensore`
---
-
-TRUNCATE TABLE `Sensore`;
 --
 -- Dump dei dati per la tabella `Sensore`
 --
@@ -217,14 +192,9 @@ INSERT INTO `Sensore` (`IdSensore`, `Parametro`, `Infrastruttura`) VALUES
 
 CREATE TABLE `SocietaManutenzione` (
   `Utente` varchar(64) NOT NULL,
-  `DataRegistrazione` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `DataRegistrazione` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `SocietaManutenzione`
---
-
-TRUNCATE TABLE `SocietaManutenzione`;
 --
 -- Dump dei dati per la tabella `SocietaManutenzione`
 --
@@ -240,39 +210,40 @@ INSERT INTO `SocietaManutenzione` (`Utente`, `DataRegistrazione`) VALUES
 --
 
 CREATE TABLE `StoricoRilevazioni` (
-  `Sensore` int(11) NOT NULL,
-  `DataRilevazione` datetime NOT NULL DEFAULT current_timestamp(),
+  `Sensore` int NOT NULL,
+  `DataRilevazione` date NOT NULL,
   `Valore` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `StoricoRilevazioni`
---
-
-TRUNCATE TABLE `StoricoRilevazioni`;
 --
 -- Dump dei dati per la tabella `StoricoRilevazioni`
 --
 
 INSERT INTO `StoricoRilevazioni` (`Sensore`, `DataRilevazione`, `Valore`) VALUES
-(1, '2021-05-18 15:46:53', 100),
-(1, '2021-05-19 09:36:47', 85),
-(2, '2021-05-18 15:46:59', 100),
-(2, '2021-05-19 09:37:13', 70),
-(3, '2021-05-18 15:47:06', 100),
-(3, '2021-05-19 09:37:41', 50),
-(4, '2021-05-18 15:48:45', 100),
-(4, '2021-05-19 09:37:41', 60),
-(5, '2021-05-18 15:48:52', 100),
-(5, '2021-05-19 09:37:41', 95),
-(6, '2021-05-18 15:49:01', 100),
-(6, '2021-05-19 09:37:41', 80),
-(7, '2021-05-18 15:49:38', 100),
-(8, '2021-05-18 15:49:53', 100),
-(9, '2021-05-18 15:49:53', 100),
-(10, '2021-05-18 15:50:57', 100),
-(11, '2021-05-18 15:50:57', 100),
-(12, '2021-05-18 15:50:57', 100);
+(1, '2021-05-18', 100),
+(1, '2021-05-20', 100),
+(2, '2021-05-18', 100),
+(2, '2021-05-20', 100),
+(3, '2021-05-18', 100),
+(3, '2021-05-20', 100),
+(4, '2021-05-18', 100),
+(4, '2021-05-20', 100),
+(5, '2021-05-18', 100),
+(5, '2021-05-20', 100),
+(6, '2021-05-18', 100),
+(6, '2021-05-20', 100),
+(7, '2021-05-18', 100),
+(7, '2021-05-20', 100),
+(8, '2021-05-18', 100),
+(8, '2021-05-20', 100),
+(9, '2021-05-18', 100),
+(9, '2021-05-20', 100),
+(10, '2021-05-18', 100),
+(10, '2021-05-20', 100),
+(11, '2021-05-18', 100),
+(11, '2021-05-20', 100),
+(12, '2021-05-18', 100),
+(12, '2021-05-20', 100);
 
 -- --------------------------------------------------------
 
@@ -284,13 +255,8 @@ CREATE TABLE `Utente` (
   `Email` varchar(64) NOT NULL,
   `Password` varchar(60) NOT NULL,
   `Categoria` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Svuota la tabella prima dell'inserimento `Utente`
---
-
-TRUNCATE TABLE `Utente`;
 --
 -- Dump dei dati per la tabella `Utente`
 --
@@ -323,7 +289,8 @@ ALTER TABLE `AppaltoAperto`
 -- Indici per le tabelle `AppaltoConcluso`
 --
 ALTER TABLE `AppaltoConcluso`
-  ADD PRIMARY KEY (`Appalto`);
+  ADD PRIMARY KEY (`Appalto`),
+  ADD KEY `FK_SocMan_AppaltoConcl` (`SocietaManutenzione`);
 
 --
 -- Indici per le tabelle `Autostrada`
@@ -385,19 +352,19 @@ ALTER TABLE `Utente`
 -- AUTO_INCREMENT per la tabella `Appalto`
 --
 ALTER TABLE `Appalto`
-  MODIFY `IdAppalto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdAppalto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `Infrastruttura`
 --
 ALTER TABLE `Infrastruttura`
-  MODIFY `CodiceInfr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CodiceInfr` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `Sensore`
 --
 ALTER TABLE `Sensore`
-  MODIFY `IdSensore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `IdSensore` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Limiti per le tabelle scaricate
@@ -420,7 +387,8 @@ ALTER TABLE `AppaltoAperto`
 -- Limiti per la tabella `AppaltoConcluso`
 --
 ALTER TABLE `AppaltoConcluso`
-  ADD CONSTRAINT `FK_Appalto` FOREIGN KEY (`Appalto`) REFERENCES `Appalto` (`IdAppalto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_Appalto` FOREIGN KEY (`Appalto`) REFERENCES `Appalto` (`IdAppalto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_SocMan_AppaltoConcl` FOREIGN KEY (`SocietaManutenzione`) REFERENCES `SocietaManutenzione` (`Utente`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Limiti per la tabella `Disponibilita`
