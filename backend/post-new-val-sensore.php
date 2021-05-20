@@ -22,6 +22,8 @@ VALUES ($idSensore, $val)";
 
 $results = $user->query($query, false);
 
+// TODO aggiornare attributi IndiceBonta calcolando ogni volta la media degli ultimi valori dei sensori
+
 if($val < 30){
 	$user->indiciAppalto($idSensore);
 }

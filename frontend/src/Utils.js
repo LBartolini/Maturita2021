@@ -1,5 +1,5 @@
 const trovaColoreProgressBar = (stato) => {
-	if(stato > 75){
+	if(stato > 80){
 		return "success";
 	}
 
@@ -49,7 +49,7 @@ function LastDays (n) {
 }
 
 const trovaColoreStato = (valoreStato) => {
-	if(valoreStato > 75){
+	if(valoreStato > 80){
 		return "green";
 	}
 	

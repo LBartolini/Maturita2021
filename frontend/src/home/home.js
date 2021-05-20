@@ -18,20 +18,7 @@ const HomeScreen = () => {
 				<h6>Appalti e bandi di manutenzione</h6>
 			</div>
 			<div className="body-home">
-				<pre style={{marginLeft: 30}}>{JSON.stringify(user, null, 2)}</pre>
-				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({
-						email:"pippo@atmi.it" , 
-						categoria: "Societa Manutenzione",
-						disponibilitaParametri: ["Asfalto", "Struttura"]
-					});
-				}}>Soc Manutenzione</button>
-				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({email:"pippo@atmi.it", categoria: "Societa Autostrada"});
-				}}>Soc Autostrada</button>
-				<button style={{ height: 50, marginLeft: 30 }}onClick={() => {
-					setUser({email:"pippo@atmi.it", categoria: "Ministero"});
-				}}>Ministero</button>
+				<pre style={{marginLeft: 90}}>{JSON.stringify(user, null, 2)}</pre>
 			</div>
 		</div>
 	);

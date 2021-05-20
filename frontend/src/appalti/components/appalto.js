@@ -7,7 +7,7 @@ import { trovaColoreProgressBar } from "@src/Utils.js";
 
 const Appalto = ({ appalto }) => {
 	const {user} = useContext(UserContext);
-	const stato_manutenzione = appalto.stato_manutenzione;
+	const indiceBonta = appalto.indiceBonta;
 
 	return (
 		<div className="appalto-item">
@@ -18,8 +18,8 @@ const Appalto = ({ appalto }) => {
 					<h2>Codice Appalto: {appalto.id}</h2>
 				</div>
 				<div className="appalto-item-sensori">
-					<h2>Stato di Manutenzione [{stato_manutenzione}%]</h2>
-					<ProgressBar  animated striped variant={trovaColoreProgressBar(stato_manutenzione)} now={stato_manutenzione}/>
+					<h2>Stato di Manutenzione [{indiceBonta}%]</h2>
+					<ProgressBar  animated striped variant={trovaColoreProgressBar(indiceBonta)} now={indiceBonta}/>
 				</div>
 				{ user && user.categoria == "Societa Manutenzione" ? 
 				<div className="appalto-item-btn">

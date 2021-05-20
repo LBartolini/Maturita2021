@@ -5,13 +5,14 @@ import {
 import Dropdown from "react-bootstrap/Dropdown";
 import './appalti.css';
 import { UserContext } from "@src/UserContext.js";
+import GlobalVar from "@src/GlobalVar.js";
 import Appalto from './components/appalto.js';
 
 const AppaltiScreen = () => {
 	const { user, setUser } = useContext(UserContext);
 	const history = useHistory();
 	const [appalti, setAppalti] = useState([]);
-	const [filtroParam, setFiltroParam] = useState("...");
+	const [filtroParam, setFiltroParam] = useState("Tutti");
 
 	useEffect(() => {
 		// viene eseguito ad ogni render
@@ -22,23 +23,30 @@ const AppaltiScreen = () => {
 
 	useEffect(() => {
 		// viene eseguito quando cambia il filtro
-		// TODO fare call all'api per sovrascrivere i valori precedenti da renderizzare
-		const x = [];
-		for (let i = 0; i < 20; i++) {
-			x.push({
-				id: i,
-				infrastruttura: "Ponte X",
-				parametro: "Asfalto",
-				stato_manutenzione: 100
-			})
-		}
-		setAppalti(x);
-
+		fetch(GlobalVar.urlAPI+'/appalti-aperti.php?filtro='+filtroParam+'&cat='+user.categoria, {
+            method: 'GET',
+            headers: {
+                "Authentication": GlobalVar.token
+            }
+        }) 
+        .then(response => {
+            if(response.status == 200){
+                return response.json();
+            }else{
+                setUser(null);
+				GlobalVar.token = "";
+				history.push("/");
+                throw new Error;
+            }
+        })
+        .then(data => {
+			setAppalti(data);
+		})
+        .catch(err => console.log(err));
 	}, [filtroParam, setFiltroParam]);
 
 	return (
 		<div className="appalti router-content">
-
 			<div className="filtri">
 				<h3>Filtra per parametri: </h3>
 				<Dropdown>
@@ -47,15 +55,15 @@ const AppaltiScreen = () => {
 					</Dropdown.Toggle>
 					{user && user.categoria == "Societa Manutenzione" ?
 						<Dropdown.Menu>
-							<Dropdown.Item key={0} onClick={() => { setFiltroParam("...") }}>...</Dropdown.Item>
+							<Dropdown.Item key={0} onClick={() => { setFiltroParam("Tutti") }}>Tutti</Dropdown.Item>
 							{
 								user.disponibilitaParametri.map((val, idx) => <Dropdown.Item key={idx} onClick={() => { setFiltroParam(val) }}>{val}</Dropdown.Item>)
 							}
 						</Dropdown.Menu>
 						:
 						<Dropdown.Menu>
-							<Dropdown.Item key={0} onClick={() => { setFiltroParam("...") }}>...</Dropdown.Item>
-							<Dropdown.Item key={1} onClick={() => { setFiltroParam("Elettricita") }}>Elettricita Alta</Dropdown.Item>
+							<Dropdown.Item key={0} onClick={() => { setFiltroParam("Tutti") }}>Tutti</Dropdown.Item>
+							<Dropdown.Item key={1} onClick={() => { setFiltroParam("Elettricita") }}>Elettricita</Dropdown.Item>
 							<Dropdown.Item key={3} onClick={() => { setFiltroParam("Asfalto") }}>Asfalto</Dropdown.Item>
 							<Dropdown.Item key={4} onClick={() => { setFiltroParam("Struttura") }}>Struttura</Dropdown.Item>
 						</Dropdown.Menu>}

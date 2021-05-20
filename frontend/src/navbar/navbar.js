@@ -68,7 +68,7 @@ const NavBar = () => {
 					},
 					{
 						title: 'Appalti di Manutenzione',
-						itemId: '/Appalti',
+						itemId: '/appalti',
 						elemBefore: null,
 					});
 				break;
