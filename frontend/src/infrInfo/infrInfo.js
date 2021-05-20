@@ -48,6 +48,45 @@ const InfrInfo = () => {
         .catch(err => console.log(err));
 	}
 
+	const newAppalto = () => {
+		if(paramAttuale == "scegliere parametro..."){
+			alert("Selezionare un parametro!");
+			return;
+		}
+
+		let to_send = {
+			id: id,
+			parametro: paramAttuale
+		};
+
+		fetch(GlobalVar.urlAPI+'/new-appalto.php', {
+            method: 'POST',
+            headers: {
+                "Authentication": GlobalVar.token,
+				"Content-Type": "application/json"
+            },
+			body: JSON.stringify(to_send)
+        }) 
+        .then(response => {
+            if(response.status == 200){
+                return response.json();
+            }else{
+                setUser(null);
+				GlobalVar.token = "";
+				history.push("/");
+                throw new Error;
+            }
+        })
+        .then(data => {
+			if(data){
+				alert("Appalto indetto con successo!");
+			}else{
+				alert("Impossibile indire appalto!");
+			}
+		})
+        .catch(err => console.log(err));
+	}
+
 	useEffect(() => {
 		//controllo utente
 		if(user){
@@ -99,7 +138,7 @@ const InfrInfo = () => {
 						<button onClick={() => { fetchDatiManutenzione() }}>Aggiorna dati</button>
 						{user && user.categoria == "Societa Autostrada" ?
 							<div className="infr-btns-appalto">
-								<button onClick={() => {}}>Indici Appalto</button>
+								<button onClick={() => {newAppalto()}}>Indici Appalto</button>
 								<h5>per parametro:</h5>
 								<Dropdown>
 									<Dropdown.Toggle style={{color: "black"}}>

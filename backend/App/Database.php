@@ -139,6 +139,33 @@ class Database
 		return true;
 	}
 
+	public function indiciAppaltoCP($CodiceInfr, $Parametro){ // indici appalto CP (codice infr e parametro)
+		if($this->checkAppaltoAperto($CodiceInfr, $Parametro)){
+			// appalto già aperto
+			return false;
+		}
+
+		$query = "INSERT INTO Appalto (Parametro, Infrastruttura)
+				VALUES ('$Parametro', $CodiceInfr)";
+
+		$this->query($query, false);
+
+		$query = "SELECT IdAppalto
+					FROM Appalto
+					WHERE Infrastruttura=$CodiceInfr AND Parametro='$Parametro'
+					ORDER BY DataApertura DESC
+					LIMIT 1";
+
+		$IdAppalto = $this->query($query)[0]->IdAppalto;
+
+		$query = "INSERT INTO AppaltoAperto (Appalto)
+				VALUES ('$IdAppalto')";
+
+		$this->query($query);
+
+		return true;
+	}
+
     public function query($query, $acceptResults=true)
     {
         $result = $this->connessione->query($query);
