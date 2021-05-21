@@ -9,6 +9,7 @@ import { trovaColoreProgressBar } from "@src/Utils.js";
 
 const Infrastruttura = ({ infr }) => {
 	const history = useHistory();
+	const IndiceBonta = parseFloat(infr.IndiceBonta).toFixed(2);
 
 	return (
 		<div className="infr-item">
@@ -19,8 +20,8 @@ const Infrastruttura = ({ infr }) => {
 					<h2>Codice: {infr.Id}</h2>
 				</div>
 				<div className="infr-item-sensori">
-					<h2>Indice di Bontà [{infr.IndiceBonta}%]</h2>
-					<ProgressBar  animated striped variant={trovaColoreProgressBar(infr.IndiceBonta)} now={infr.IndiceBonta}/>
+					<h2>Indice di Bontà [{IndiceBonta}%]</h2>
+					<ProgressBar  animated striped variant={trovaColoreProgressBar(IndiceBonta)} now={IndiceBonta}/>
 				</div>
 				<div className="infr-item-btn">
 					<Button variant="secondary" onClick={() => history.push('/infr-info/'+infr.Id)}>INFO</Button>

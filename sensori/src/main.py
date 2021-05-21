@@ -33,8 +33,7 @@ def main():
             print(params, "\n")
         if send_data:
             r = requests.post(
-                BASE_URL+"/post-new-val-sensore.php", data=params)
-
+                    BASE_URL+"/post-new-val-sensore.php", data=params)
 
 if __name__ == "__main__":
     main()

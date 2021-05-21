@@ -11,7 +11,7 @@ import GlobalVar from "@src/GlobalVar.js";
 
 const Appalto = ({ appalto, aggiornaDati }) => {
 	const { user, setUser } = useContext(UserContext);
-	const indiceBonta = appalto.indiceBonta;
+	const indiceBonta = parseFloat(appalto.indiceBonta).toFixed(2);
 	const history = useHistory();
 
 	const eseguiIntervento = () => {

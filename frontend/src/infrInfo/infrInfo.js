@@ -129,9 +129,9 @@ const InfrInfo = () => {
 			{ponte && (<>
 				<div className="infr-head">
 					<h2>{ponte.Nome}</h2>
-					<h2>Autostrada: {ponte.Autostrada}</h2>
+					<h2>{ponte.Autostrada}</h2>
 					<h2>Id: {ponte.Id}</h2>
-					<h2 id="h-stato" style={{color: trovaColoreStato(ponte.IndiceBonta)}}>Indice Bontà: {ponte.IndiceBonta}%</h2>
+					<h2 id="h-stato" style={{color: trovaColoreStato(parseFloat(ponte.IndiceBonta).toFixed(2))}}>Indice Bontà: {parseFloat(ponte.IndiceBonta).toFixed(2)}%</h2>
 				</div>
 				<div className="infr-body">
 					<div className="infr-btns">

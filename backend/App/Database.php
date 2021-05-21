@@ -168,6 +168,38 @@ class Database
 
 	public function ricalcolaIndiceBonta($IdSensore){
 		// TODO Ricalcolare indice bonta dell'infrastruttura collegata
+		$query = "
+		UPDATE Infrastruttura
+		SET IndiceBonta=(
+			SELECT AVG(Valore)
+			FROM (
+				SELECT a.Valore
+				FROM (
+					SELECT *
+					FROM StoricoRilevazioni
+					WHERE Sensore IN (
+						SELECT IdSensore 
+						FROM Sensore
+						WHERE Infrastruttura IN (
+							SELECT Infrastruttura
+							FROM Sensore
+							WHERE IdSensore='$IdSensore'
+						)
+					)
+				ORDER BY DataRilevazione DESC) as a
+			WHERE a.DataRilevazione=(
+				SELECT MAX(b.DataRilevazione)
+				FROM StoricoRilevazioni AS b
+				WHERE b.Sensore=a.Sensore
+			)
+			GROUP BY a.Sensore) as c)
+		WHERE CodiceInfr=(
+			SELECT Infrastruttura
+			FROM Sensore
+			WHERE IdSensore='$IdSensore'
+		)";
+
+		$this->query($query, false);
 	}
 
     public function query($query, $acceptResults=true)
