@@ -12,7 +12,7 @@ const InfrInfo = () => {
 	const { user, setUser } = useContext(UserContext);
 	const [ponte, setPonte] = useState(null);
 	const [datiManutenzione, setDatiManutenzione] = useState(null);
-	const [paramAttuale, setParamAttuale] = useState("scegliere parametro...");
+	const [paramAttuale, setParamAttuale] = useState("scegli...");
 	const { id } = useParams();
 	const history = useHistory();
 
@@ -49,7 +49,7 @@ const InfrInfo = () => {
 	}
 
 	const newAppalto = () => {
-		if(paramAttuale == "scegliere parametro..."){
+		if(paramAttuale == "scegli..."){
 			alert("Selezionare un parametro!");
 			return;
 		}
@@ -138,7 +138,7 @@ const InfrInfo = () => {
 						<button onClick={() => { fetchDatiManutenzione() }}>Aggiorna dati</button>
 						{user && user.categoria == "Societa Autostrada" ?
 							<div className="infr-btns-appalto">
-								<button onClick={() => {newAppalto()}}>Indici Appalto</button>
+								<button onClick={() => {newAppalto()}}>Genera Appalto</button>
 								<h5>per parametro:</h5>
 								<Dropdown>
 									<Dropdown.Toggle style={{color: "black"}}>

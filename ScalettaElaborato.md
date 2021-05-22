@@ -6,13 +6,19 @@
 
 - ## Architettura Software
   
-  - #### Frontend (React)
+  - ### Frontend (React)
+
+    - #### Comunicazione tramite Fetch
+
+	- #### Sicurezza tramite Token
   
-  - #### Backend (PHP)
+  - ### Backend (PHP)
+    
+	- #### API
   
-  - #### DBMS (MySQL)
+  - ### DBMS (MySQL)
   
-  - #### Simulazione Sensori (Python)
+  - ### Simulazione Sensori (Python)
 
 - ## Database
 
