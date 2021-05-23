@@ -10,7 +10,117 @@
 
 ## Sede Centrale
 
+Indirizzo di partenza: 192.168.0.0/25
 
+Maschera di sottorete: 255.255.255.128
+
+Wildcard:  0.0.0.127
+
+### Sottoreti:
+
+- Reparto IT
+
+- Uffici PT
+
+- Uffici 1P
+
+- VPN Accentratori
+
+#### Reparto IT
+
+Host: 4 ( 1 Host + 3 Server ); Stampanti: 0; Ampliamenti futuri: 0;
+
+IP riservati: 4 [3 (This Net, Gateway, Broadcast) + 1 (VPN Ministero client-to-gateway)]
+
+Fabbisogno: 8 ip
+
+Slash di sottorete: /29 (con h=3)
+
+#### Uffici PT
+
+Host: 20; Stampanti: 2; Ampliamenti futuri: 5;
+
+IP riservati: 3 (This Net, Gateway, Broadcast)
+
+Fabbisogno: 30 ip
+
+Slash di sottorete: /27 (con h=5)
+
+#### Uffici 1P
+
+Host: 20; Stampanti: 2; Ampliamenti futuri: 5;
+
+IP riservati: 3 (This Net, Gateway, Broadcast)
+
+Fabbisogno: 30 ip
+
+Slash di sottorete: /27 (con h=5)
+
+#### VPN Accentratori
+
+Host: 10; Stampanti: 0; Ampliamenti futuri: 15;
+
+IP riservati: 3 (This Net, Gateway, Broadcast)
+
+Fabbisogno: 28 ip
+
+Slash di sottorete: /27 (con h=5)
+
+#### Complessivo:
+
+Fabbisogno: 32 ip (Uffici PT) + 32 ip (Uffici 1P) + 32 ip (VPN Accentratori) + 8 ip (Reparto IT) = 104 ip    
+
+Slash di rete:  /25 (con h=7)
+
+### Assegnazione IP:
+
+#### Uffici PT
+
+This Net: 192.168.0.0
+
+Subnet Mask: 255.255.255.224
+
+Range Host: 192.168.0.1 -> 192.168.29
+
+Gateway: 192.168.0.30
+
+Broadcast: 192.168.0.31
+
+#### Uffici 1P
+
+This Net: 192.168.0.32
+
+Subnet Mask: 255.255.255.224
+
+Range Host: 192.168.0.33 -> 192.168.61
+
+Gateway: 192.168.0.62
+
+Broadcast: 192.168.0.63
+
+#### VPN Accentratori
+
+This Net: 192.168.0.64
+
+Subnet Mask: 255.255.255.224
+
+Range Host: 192.168.0.65 -> 192.168.93
+
+Gateway: 192.168.0.94
+
+Broadcast: 192.168.0.95
+
+#### Reparto IT
+
+This Net: 192.168.0.96
+
+Subnet Mask: 255.255.255.248
+
+Range Host: 192.168.0.97 -> 192.168.101
+
+Gateway: 192.168.0.102
+
+Broadcast: 192.168.0.103
 
 ---
 
@@ -29,8 +139,6 @@ Wildcard: 0.0.0.31
 - Infrastruttura A
 
 - Infrastruttura B
-
-
 
 #### Accentratore
 
