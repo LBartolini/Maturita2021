@@ -7,28 +7,28 @@
 - ## Architettura Software
   
   - ### Frontend (React)
-
+    
     - #### Comunicazione tramite Fetch
-
-	- #### Sicurezza tramite Token
+    
+    - #### Sicurezza tramite Token
   
   - ### Backend (PHP)
     
-	- #### API
+    - #### API
   
   - ### DBMS (MySQL)
   
   - ### Simulazione Sensori (Python)
 
-- ## Database
-
+- ## Progettazione Database
+  
   - ### Studio di fattibilità e analisti dei requisiti
   
   - ### Progettazione Concettuale
   
   - ### Progettazione Logica
-
-  	- #### Ristrutturazione
+    
+    - #### Ristrutturazione
   
   - ### Progettazione Fisica
     
