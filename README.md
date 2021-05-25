@@ -28,6 +28,10 @@ https://s3.amazonaws.com/scribblelive-com-prod/wp-content/uploads/sites/4/2020/1
 
 https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4#:~:text=Many%20web%20applications%20use%20JSON,instead%20of%20sessions%20for%20authentication.&text=The%20biggest%20difference%20here%20is,on%20the%20client%20side%20instead.
 
+### Ipotesi
+
+schema di rete: il server web fornisce su porta 80 il sito e 81 l'API per i sensori
+
 ### Utenti e Password
 
 autostrada@atmi.it - autostrada
