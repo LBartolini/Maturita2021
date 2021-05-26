@@ -23,7 +23,7 @@ def main():
         val = r.json()
         last_values = [(datetime.datetime.strptime(
             x["data"], "%Y-%m-%d").timestamp(), float(x["Valore"])) for x in reversed(val)]
-        nuovo = nuovo_dato(last_values, momentum_mult=1,
+        nuovo = nuovo_dato(last_values, momentum_mult=1, prob_base_stazionare=0.8,
                            max_decaduta=0.05, punti_momentum=3, verbose=verbose)
         params = {
             "id": sensore["IdSensore"],

@@ -17,3 +17,8 @@ ALTER USER 'atmi'@'%localhost' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONN
 https://www.php.net/manual/en/function.password-hash.php
 
 con PASSWORD_BCRYPT
+
+#### Da aggiungere a file .sql per importare il db
+
+CREATE DATABASE ATMI CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE ATMI;

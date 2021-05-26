@@ -39,7 +39,7 @@ def nuovo_dato(last_punti, prob_base_stazionare=0.9, max_decaduta=0.05, momentum
 		return last_punti[-1][1]-delta
 
 def trova_rischio(last_punti, punti_momentum):
-	return sum([trova_m(last_punti[-(i+1)], last_punti[-1]) for i in range(1, punti_momentum)])/punti_momentum
+	return sum([trova_m(last_punti[-(i+1)], last_punti[-i]) for i in range(1, punti_momentum)])/punti_momentum
 
 def trova_m(p1, p2):  #p1 e p2 del tipo (x, y)
 	try:

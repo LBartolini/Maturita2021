@@ -16,9 +16,8 @@ const HomeScreen = () => {
 				<h2>ATMI</h2>
 				<h6>Stato di manutenzione di Ponti e Viadotti in Toscana</h6>
 				<h6>Appalti e bandi di manutenzione</h6>
-			</div>
-			<div className="body-home">
-				<pre style={{marginLeft: 90}}>{JSON.stringify(user, null, 2)}</pre>
+				<br/>
+				<h6>Eseguire l'accesso per entrare nel portale</h6>
 			</div>
 		</div>
 	);
