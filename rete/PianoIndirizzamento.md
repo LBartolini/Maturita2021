@@ -68,7 +68,7 @@ Slash di sottorete: /27 (con h=5)
 
 #### Complessivo:
 
-Fabbisogno: 32 ip (Uffici PT) + 32 ip (Uffici 1P) + 32 ip (VPN Accentratori) + 8 ip (Reparto IT) = 104 ip    
+Fabbisogno: 32 ip (Uffici PT) + 32 ip (Uffici 1P) + 32 ip (VPN Accentratori) + 8 ip (Reparto IT) = 104 ip    
 
 Slash di rete:  /25 (con h=7)
 

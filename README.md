@@ -30,7 +30,13 @@ https://sherryhsu.medium.com/session-vs-token-based-authentication-11a6c5ac45e4#
 
 ### Ipotesi
 
-schema di rete: il server web fornisce su porta 80 il sito e 81 l'API per i sensori
+schema di rete: 
+
+il server web fornisce su porta 80 il sito
+
+il server API e DATABASE è protetto tramite acl e fornisce i servizi su porta 3306 e 80
+
+deve essere accessibile solo tramite host appartententi a vpn Accentratori/Ministero
 
 ### Utenti e Password
 
