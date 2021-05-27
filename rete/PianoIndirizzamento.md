@@ -140,6 +140,10 @@ Wildcard: 0.0.0.31
 
 - Infrastruttura B
 
+- PaP A-GW
+
+- PaP B-GW
+
 #### Accentratore
 
 Host: 1; Stampanti: 0; Ampliamenti futuri: 0;
