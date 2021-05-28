@@ -44,7 +44,6 @@ if($res){
 }
 
 // email disponibile
-
 $prep = $user->connessione->prepare("INSERT INTO Utente (`Email`, `Password`, `Categoria`) 
 									VALUES (?, ?, 'Societa Manutenzione')");
         

@@ -77,7 +77,8 @@ const Mappa = () => {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 				{markers.map((marker) => {
-					return (<Marker position={marker.Coordinate} key={marker.Id}>
+					return (
+					<Marker position={marker.Coordinate} key={marker.Id}>
 						<Popup>
 							<p>{marker.Nome}</p>
 							<p>Autostrada {marker.Autostrada}</p>
