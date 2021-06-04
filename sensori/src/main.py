@@ -3,11 +3,11 @@ import requests
 import datetime
 import time
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "http://192.168.1.10:8000"
 
 
 def main():
-    verbose = True
+    verbose = False
     send_data = True
     r = requests.get(BASE_URL+"/get-sensori.php")
     sensori = r.json()
