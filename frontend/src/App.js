@@ -27,15 +27,14 @@ function App() {
 				<div className="flex-body-container">
 					<NavBar />
 					<Switch className="router">
-						<Route path="/login" component={LoginScreen} />
-						<Route path="/logout" component={Logout} />
-						<Route path="/signin" component={SigninScreen} />
-						<Route path="/infrastrutture" exact component={InfrScreen} />
-						<Route path="/infr-info/:id" component={InfrInfo} />
-						<Route path="/mappa" component={Mappa} />
-						<Route path="/appalti" component={AppaltiScreen} />
-						<Route path="/home" component={HomeScreen} />
-						<Route path="/" exact component={HomeScreen} />
+						<Route path="/atmi/login" component={LoginScreen} />
+						<Route path="/atmi/logout" component={Logout} />
+						<Route path="/atmi/signin" component={SigninScreen} />
+						<Route path="/atmi/infrastrutture" exact component={InfrScreen} />
+						<Route path="/atmi/infr-info/:id" component={InfrInfo} />
+						<Route path="/atmi/mappa" component={Mappa} />
+						<Route path="/atmi/appalti" component={AppaltiScreen} />
+						<Route path="/atmi/" exact component={HomeScreen} />
 					</Switch>
 				</div>
 			</Router>

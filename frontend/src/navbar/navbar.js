@@ -85,7 +85,7 @@ const NavBar = () => {
 			<Navigation
 				activeItemId="/"
 				onSelect={({ itemId }) => {
-					history.push(itemId);
+					history.push("/atmi"+itemId);
 				}}
 				items={items_navbar}
 			/>
