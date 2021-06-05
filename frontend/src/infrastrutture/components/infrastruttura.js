@@ -24,7 +24,7 @@ const Infrastruttura = ({ infr }) => {
 					<ProgressBar  animated striped variant={trovaColoreProgressBar(IndiceBonta)} now={IndiceBonta}/>
 				</div>
 				<div className="infr-item-btn">
-					<Button variant="secondary" onClick={() => history.push('/infr-info/'+infr.Id)}>INFO</Button>
+					<Button variant="secondary" onClick={() => history.push('/atmi/infr-info/'+infr.Id)}>INFO</Button>
 				</div>
 			</div>
 		</div>
