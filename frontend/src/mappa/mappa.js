@@ -39,7 +39,7 @@ const Mappa = () => {
             }else{
                 setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
                 throw new Error;
             }
         })
@@ -56,14 +56,14 @@ const Mappa = () => {
 			if(user.categoria == "Societa Manutenzione"){
 				setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
 			}else{
 				// accenso consentito
 				fetchPuntiMappa();
 			}
 		}else{
 			//utente non ha fatto l'accesso
-			history.push("/");
+			history.push("/atmi/");
 		}
 	}, []);
 
@@ -82,7 +82,7 @@ const Mappa = () => {
 						<Popup>
 							<p>{marker.Nome}</p>
 							<p>Autostrada {marker.Autostrada}</p>
-							<button onClick={() => history.push('/infr-info/' + marker.Id)}>INFO</button>
+							<button onClick={() => history.push('/atmi/infr-info/' + marker.Id)}>INFO</button>
 						</Popup>
 					</Marker>)
 				})

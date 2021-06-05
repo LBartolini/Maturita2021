@@ -19,11 +19,11 @@ const InfrScreen = () => {
 			if(user.categoria == "Societa Manutenzione"){
 				setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
 			}
 		}else{
 			//utente non ha fatto l'accesso
-			history.push("/");
+			history.push("/atmi/");
 		}
 
 		fetch(GlobalVar.urlAPI+'/infrastrutture.php', {
@@ -38,7 +38,7 @@ const InfrScreen = () => {
             }else{
                 setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
                 throw new Error;
             }
         })

@@ -12,7 +12,7 @@ const Logout = () => {
 
 	setUser(null);
 	GlobalVar.token = "";
-	history.push('/');
+	history.push('/atmi/');
 	return null;
 }
 

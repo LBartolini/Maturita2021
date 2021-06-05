@@ -34,7 +34,7 @@ const AppaltiScreen = () => {
             }else{
                 setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
                 throw new Error;
             }
         })

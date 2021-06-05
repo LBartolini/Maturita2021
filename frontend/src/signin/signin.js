@@ -51,7 +51,7 @@ const SigninScreen = () => {
 							throw new Error;
 						}
 					}).then(data => {
-						history.push("/");
+						history.push("/atmi/");
 					}).catch(error => console.log(error));
 			}
 		}
@@ -83,7 +83,7 @@ const SigninScreen = () => {
 					<input type="checkbox" className="form-signin-input" onChange={e => setAsfalto(e.target.checked)} />
 				</div>
 				<div className="form-signin-row">
-					<a onClick={() => { history.push("/login") }} className="ancora-form">Torna al login</a>
+					<a onClick={() => { history.push("/atmi/login") }} className="ancora-form">Torna al login</a>
 					<button onClick={handleSubmit}>Registrati</button>
 				</div>
 			</div>

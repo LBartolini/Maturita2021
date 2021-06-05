@@ -49,7 +49,7 @@ const LoginScreen = () => {
 					});
 				}
 				GlobalVar.token = data.Token;
-				history.push("/");
+				history.push("/atmi/");
 			}).catch(error => console.log(error));
 
 		setPassword("");
@@ -69,7 +69,7 @@ const LoginScreen = () => {
 					<input type="password" className="form-login-input" value={password} onChange={e => setPassword(e.target.value)} />
 				</div>
 				<div className="form-login-row">
-					<a onClick={() => { history.push("/signin") }} className="ancora-form">Non hai un account?<br /> Registrati</a>
+					<a onClick={() => { history.push("/atmi/signin") }} className="ancora-form">Non hai un account?<br /> Registrati</a>
 					<button onClick={handleSubmit}>Accedi</button>
 				</div>
 			</div>

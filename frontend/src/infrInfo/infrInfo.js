@@ -38,7 +38,7 @@ const InfrInfo = () => {
             }else{
                 setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
                 throw new Error;
             }
         })
@@ -73,7 +73,7 @@ const InfrInfo = () => {
             }else{
                 setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
                 throw new Error;
             }
         })
@@ -94,11 +94,11 @@ const InfrInfo = () => {
 			if(user.categoria == "Societa Manutenzione"){
 				setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
 			}
 		}else{
 			//utente non ha fatto l'accesso
-			history.push("/");
+			history.push("/atmi/");
 		}
 
 		fetch(GlobalVar.urlAPI+'/info-infr.php?id='+id, {
@@ -113,7 +113,7 @@ const InfrInfo = () => {
             }else{
                 setUser(null);
 				GlobalVar.token = "";
-				history.push("/");
+				history.push("/atmi/");
                 throw new Error;
             }
         })
