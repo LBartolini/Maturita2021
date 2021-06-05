@@ -1,5 +1,5 @@
 const GlobalVar = {
-	urlAPI: "http://192.168.1.10:8000",
+	urlAPI: "http://192.168.1.10/atmi-api",
 	token: ""
 };
 

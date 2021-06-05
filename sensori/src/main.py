@@ -3,7 +3,7 @@ import requests
 import datetime
 import time
 
-BASE_URL = "http://192.168.1.10:8000"
+BASE_URL = "http://192.168.1.10/atmi-api"
 
 
 def main():
