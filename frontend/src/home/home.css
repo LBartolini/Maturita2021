@@ -23,3 +23,9 @@
 	width: 100%;
 	flex-grow: 9;
 }
+
+.radio-buttons {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+}
