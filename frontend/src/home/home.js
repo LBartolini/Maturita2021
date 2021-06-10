@@ -11,7 +11,7 @@ const HomeScreen = () => {
 	const {user, setUser} = useContext(UserContext);
 
 	const checkUrlLocale = GlobalVar.urlAPI === "http://192.168.1.10/atmi-api";
-	const checkUrlRemoto = GlobalVar.urlAPI === "http://lbartolini.ddns.net:3000/atmi-api";
+	const checkUrlRemoto = GlobalVar.urlAPI === "http://lbartolini.ddns.net/atmi-api";
 
 	const [urlLocale, setUrlLocale] = useState(checkUrlLocale);
 	const [urlRemoto, setUrlRemoto] = useState(checkUrlRemoto);
@@ -37,7 +37,7 @@ const HomeScreen = () => {
 				onChange={() => { 
 					setUrlRemoto(true);
 					setUrlLocale(false);
-					GlobalVar.urlAPI = "http://lbartolini.ddns.net:3000/atmi-api";
+					GlobalVar.urlAPI = "http://lbartolini.ddns.net/atmi-api";
 				 }}/></div>
 			</div>
 		</div>
