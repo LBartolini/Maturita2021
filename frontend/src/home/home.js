@@ -10,11 +10,7 @@ const HomeScreen = () => {
 	const history = useHistory();
 	const {user, setUser} = useContext(UserContext);
 
-	const checkUrlLocale = GlobalVar.urlAPI === "http://192.168.1.10/atmi-api";
-	const checkUrlRemoto = GlobalVar.urlAPI === "http://lbartolini.ddns.net/atmi-api";
-
-	const [urlLocale, setUrlLocale] = useState(checkUrlLocale);
-	const [urlRemoto, setUrlRemoto] = useState(checkUrlRemoto);
+	const [urlPersonalizzato, setUrlPersonalizzato] = useState(GlobalVar.urlAPI);
 	// per cambiare solo un attributo dello stato setUser({...stato, attr: new_value})
 	return (
 		<div className="home router-content">
@@ -27,18 +23,20 @@ const HomeScreen = () => {
 				<h6>Eseguire l'accesso per entrare nel portale</h6>
 			</div>
 			<div className="radio-buttons">
-				<div>URL LOCALE <input type="radio" value="locale" checked={urlLocale} 
+				<div>URL LOCALE <input type="radio" value="locale" checked={urlPersonalizzato === "http://192.168.1.10/atmi-api"} 
 				onChange={() => { 
-					setUrlLocale(true);
-					setUrlRemoto(false);
-					GlobalVar.urlAPI = "http://192.168.1.10/atmi-api";
+					setUrlPersonalizzato("http://192.168.1.10/atmi-api")
 				 }}/></div>
-				<div>URL REMOTO <input type="radio" value="remoto" checked={urlRemoto}
+				<div>URL REMOTO <input type="radio" value="remoto" checked={urlPersonalizzato === "http://lbartolini.ddns.net/atmi-api"}
 				onChange={() => { 
-					setUrlRemoto(true);
-					setUrlLocale(false);
-					GlobalVar.urlAPI = "http://lbartolini.ddns.net/atmi-api";
+					setUrlPersonalizzato("http://lbartolini.ddns.net/atmi-api");
 				 }}/></div>
+				 <div>URL ATTUALE <input type="text" style={{width: 300}} value={urlPersonalizzato} 
+				 onChange={(event) => setUrlPersonalizzato(event.target.value)}/>
+				 <br/>
+				 <button onClick={() => {
+					 GlobalVar.urlAPI = urlPersonalizzato;
+				 }}>Salva URL</button></div>
 			</div>
 		</div>
 	);
